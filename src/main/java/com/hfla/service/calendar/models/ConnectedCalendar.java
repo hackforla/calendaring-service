@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hfla.service.calendar.clients.NylasRequest;
 import com.nylas.*;
 import okhttp3.*;
 import org.apache.logging.log4j.LogManager;
@@ -51,66 +52,13 @@ public class ConnectedCalendar {
 	}
 
 	public List<ConnectedCalendar> retrieveCalendars() {
-		String BASE_URL = "https://api.nylas.com/calendars";
-		String APPLICATION_JSON = "application/json";
-
-		Request request = new Request.Builder()
-				.url(BASE_URL)
-				.header("Accept", APPLICATION_JSON)
-				.header("Content-type", APPLICATION_JSON)
-				.header("Authorization", "Basic " + base64EncodeUTF8(accessToken + ":"))
-				.build();
-
-		OkHttpClient client = new OkHttpClient();
-		Call call = client.newCall(request);
-		ObjectMapper mapper = new ObjectMapper();
-		InputStream responseStream = null;
-		List<ConnectedCalendar> calendars = null;
-
-		try (Response response = call.execute()) {
-			ResponseBody responseBody = response.body();
-			responseStream = responseBody.byteStream();
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(responseStream, StandardCharsets.UTF_8));
-			TypeReference<List<ConnectedCalendar>> typeReference = new TypeReference<List<ConnectedCalendar>>() {};
-			calendars = mapper.readValue(bufferedReader, typeReference);
-		} catch (IOException ioe) {
-			logger.error("error message: %s", ioe.getMessage());
-		}
-
-		return calendars;
+		return new NylasRequest(nylasId)
+				.getCalendars();
 	}
 
 	public List<NylasEvent> retrieveEvents() {
-		List<NylasEvent> events = null;
-		String BASE_URL = "https://api.nylas.com/events?calendar_id=" + calendarId;
-		String APPLICATION_JSON = "application/json";
-
-		Request request = new Request.Builder()
-				.url(BASE_URL)
-				.header("Accept", APPLICATION_JSON)
-				.header("Content-type", APPLICATION_JSON)
-				.header("Authorization", "Basic " + base64EncodeUTF8(accessToken + ":"))
-				.build();
-		OkHttpClient client = new OkHttpClient();
-		Call call = client.newCall(request);
-
-		try (Response response = call.execute()){
-			ResponseBody responseBody = response.body();
-			InputStream responseStream = responseBody.byteStream();
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(responseStream, StandardCharsets.UTF_8));
-			ObjectMapper mapper = new ObjectMapper();
-			TypeReference<List<NylasEvent>> typeReference = new TypeReference<List<NylasEvent>>() {};
-			events = mapper.readValue(bufferedReader, typeReference);
-
-			for (NylasEvent event : events) {
-				logger.info("event: %s", event.getEventId());
-			}
-
-		} catch (IOException ioe) {
-			logger.error("errorMessage: %s", ioe.getMessage());
-		}
-
-		return events;
+		return new NylasRequest(nylasId)
+				.getEvents(calendarId);
 	}
 
 	/**
@@ -183,13 +131,5 @@ public class ConnectedCalendar {
 
 	public void setEvents(List<NylasEvent> events) {
 		this.events = events;
-	}
-
-	public static String base64EncodeUTF8(String str) {
-		String encoding = new String(
-				org.apache.commons.codec.binary.Base64.encodeBase64
-						(org.apache.commons.codec.binary.StringUtils.getBytesUtf8(str))
-		);
-		return encoding;
 	}
 }

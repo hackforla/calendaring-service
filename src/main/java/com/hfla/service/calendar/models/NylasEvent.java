@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.hfla.service.calendar.clients.NylasRequest;
+import com.hfla.service.calendar.clients.NylasResponse;
 import okhttp3.*;
 import org.jboss.logging.Logger;
 
@@ -40,41 +42,9 @@ public class NylasEvent {
 
 	private static Logger logger = Logger.getLogger("NylasEvent.class");
 
-	public static String addEvent(NylasEvent event, String accessToken) {
-
-		String BASE_URL = "https://api.nylas.com/events";
-		String APPLICATION_JSON = "application/json";
-		ObjectMapper mapper = new ObjectMapper();
-		OkHttpClient client = new OkHttpClient();
-		String eventId = "0";
-
-		try  {
-			RequestBody requestBody = RequestBody.create(mapper.writeValueAsString(event), MediaType.parse(APPLICATION_JSON));
-			logger.info("requestBody: %" + mapper.writeValueAsString(event));
-			Request request = new Request.Builder()
-					.url(BASE_URL)
-					.header("Content-Type", APPLICATION_JSON)
-					.header("Authorization", "Basic  " + ConnectedCalendar.base64EncodeUTF8(accessToken + ":"))
-					.post(requestBody)
-					.build();
-
-			Call call = client.newCall(request);
-			Response response = call.execute();
-			ResponseBody responseBody = response.body();
-			InputStream inputStream = responseBody.byteStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-			TypeReference<NylasEvent> typeReference = new TypeReference<NylasEvent>() {};
-			eventId = mapper.readValue(reader, typeReference).getEventId();
-			logger.info("eventId: " +  eventId);
-		} catch (JsonProcessingException jPE) {
-			logger.error("error in processing json: %s" + jPE.getMessage());
-		} catch (IOException ioE) {
-			logger.error("iOE error: %" + ioE.getMessage());
-		} catch (Exception e) {
-			logger.error("exception: %" + e.getMessage());
-		}
-
-		return eventId;
+	public static String addEvent(NylasEvent event, String nylasId) {
+		return new NylasRequest(nylasId)
+				.addEvent(event);
 	}
 
 	/**

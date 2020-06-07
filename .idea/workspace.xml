@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78ee079c-91f4-49b9-b724-b024175ec0bc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/clients/NylasRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/clients/NylasResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/models/ConnectedCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/models/ConnectedCalendar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/models/NylasEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/models/NylasEvent.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -58,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/models/ConnectedCalendar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="194" selection-start-line="194" selection-end-line="194" />
+            <state relative-caret-position="432">
+              <caret line="134" selection-start-line="134" selection-end-line="134" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4980#4981#0" expanded="true" />
@@ -70,10 +74,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/clients/NylasRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="73" column="29" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3458#3459#0" expanded="true" />
+                <element signature="e#3518#3519#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/clients/NylasResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/models/NylasEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="202" selection-start-line="202" selection-end-line="202" />
+            <state>
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="e#2811#2812#0" expanded="true" />
                 <element signature="e#2834#2835#0" expanded="true" />
@@ -141,15 +168,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.2.3.RELEASE/spring-webmvc-5.2.3.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6477">
-              <caret line="479" selection-start-line="479" selection-end-line="479" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/models/When.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
@@ -203,7 +221,9 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/huu/controllers/ConnectedCalendarController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/ConnectedCalendarController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/clients/NylasResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/models/ConnectedCalendar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/clients/NylasRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/models/NylasEvent.java" />
       </list>
     </option>
@@ -294,26 +314,6 @@
               <item name="calendaring-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="calendar" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="calendaring-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="calendaring-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="calendar" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="calendaring-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="calendaring-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -336,6 +336,9 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com" />
     </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.hfla.service.calendar.clients" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wuyiz\FreeWoman\src\main\resources" />
     </key>
@@ -355,7 +358,7 @@
   <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.Application" />
-      <module name="FreeWoman" />
+      <module name="Blackbird" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.*" />
@@ -532,21 +535,21 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49169436" visible="true" weight="0.18923241" />
-      <window_info id="Structure" order="1" sideWeight="0.50830567" side_tool="true" visible="true" weight="0.18923241" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4918033" visible="true" weight="0.18923241" />
+      <window_info id="Structure" order="1" sideWeight="0.5081967" side_tool="true" visible="true" weight="0.18923241" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32962137" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3895966" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38864142" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4997118" weight="0.41870824" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32962137" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32962137" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32962137" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5002882" side_tool="true" weight="0.3997773" />
       <window_info anchor="bottom" id="Tail" order="10" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32962137" />
@@ -817,18 +820,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#447#448#0" expanded="true" />
-            <element signature="e#509#510#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/calendaring-service.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -887,10 +878,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/clients/NylasResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/models/ConnectedCalendar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="194" selection-start-line="194" selection-end-line="194" />
+        <state relative-caret-position="432">
+          <caret line="134" selection-start-line="134" selection-end-line="134" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4980#4981#0" expanded="true" />
@@ -899,10 +897,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#447#448#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/models/NylasEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="202" selection-start-line="202" selection-end-line="202" />
+        <state>
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
           <folding>
             <element signature="e#2811#2812#0" expanded="true" />
             <element signature="e#2834#2835#0" expanded="true" />
@@ -964,6 +974,18 @@
             <element signature="e#4633#4634#0" expanded="true" />
             <element signature="e#4672#4673#0" expanded="true" />
             <element signature="e#4697#4698#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/clients/NylasRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="73" column="29" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3458#3459#0" expanded="true" />
+            <element signature="e#3518#3519#0" expanded="true" />
           </folding>
         </state>
       </provider>
