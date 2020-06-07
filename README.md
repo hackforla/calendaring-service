@@ -1,7 +1,5 @@
 # Hack For LA: Calendaring Service
 
-Include a project description that explains **what** your project is and **why** it exists. Aim for no more than 3-5 concise sentences. For example, you might say:
-
 The Calendaring Service is an integration service that serves as a building block for Hack for LA projects that require calendar services (e.g. the ability to schedule meetings).  {Project Name} helps {target users} accomplish {goal of project}. The {app/site/thing you're building}'s main features include {very brief feature descriptions}.
 
 ### Project context
