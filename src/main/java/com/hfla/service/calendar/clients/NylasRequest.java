@@ -3,8 +3,8 @@ package com.hfla.service.calendar.clients;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hfla.service.calendar.models.ConnectedCalendar;
-import com.hfla.service.calendar.models.NylasEvent;
+import com.hfla.service.calendar.pojos.ConnectedCalendar;
+import com.hfla.service.calendar.pojos.ConnectedEvent;
 import okhttp3.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -49,8 +49,8 @@ public class NylasRequest {
 		return calendars;
 	}
 
-	public List<NylasEvent> getEvents(String calendarId) {
-		List<NylasEvent> events = null;
+	public List<ConnectedEvent> getEvents(String calendarId) {
+		List<ConnectedEvent> events = null;
 		String baseUrl = "https://api.nylas.com/events?calendar_id=" + calendarId;
 		Request request = buildNylasGetRequest(baseUrl);
 
@@ -61,7 +61,7 @@ public class NylasRequest {
 					.body()
 					.byteStream(), StandardCharsets.UTF_8));
 			events = new ObjectMapper().readValue(bufferedReader,
-					new TypeReference<List<NylasEvent>>() {});
+					new TypeReference<List<ConnectedEvent>>() {});
 					//mapper.getTypeFactory().constructCollectionType(List.class, NylasEvent.class));
 
 		} catch (IOException ioe) {
@@ -71,7 +71,7 @@ public class NylasRequest {
 		return events;
 	}
 
-	public String addEvent(NylasEvent event) {
+	public String addEvent(ConnectedEvent event) {
 		String baseUrl = "https://api.nylas.com/events";
 		ObjectMapper mapper = new ObjectMapper();
 		String eventId = "0";
@@ -84,7 +84,7 @@ public class NylasRequest {
 					.byteStream();
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
 			eventId = mapper.readValue(bufferedReader,
-					new TypeReference<NylasEvent>() {}).getEventId();
+					new TypeReference<ConnectedEvent>() {}).getEventId();
 			logger.info("eventId: " +  eventId);
 		} catch (JsonProcessingException jPE) {
 			logger.error("error in processing json: %s" + jPE.getMessage());
@@ -135,7 +135,7 @@ public class NylasRequest {
 				.build();
 	}
 
-	private RequestBody buildRequestBody(NylasEvent event) throws JsonProcessingException{
+	private RequestBody buildRequestBody(ConnectedEvent event) throws JsonProcessingException{
 		return RequestBody.create(new ObjectMapper().writeValueAsString(event),
 				MediaType.parse(APPLICATION_JSON));
 	}

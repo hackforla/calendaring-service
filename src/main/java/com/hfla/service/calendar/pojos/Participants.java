@@ -1,4 +1,4 @@
-package com.hfla.service.calendar.models;
+package com.hfla.service.calendar.pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

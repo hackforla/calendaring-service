@@ -1,22 +1,12 @@
-package com.hfla.service.calendar.models;
+package com.hfla.service.calendar.pojos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.hfla.service.calendar.clients.NylasRequest;
-import com.hfla.service.calendar.clients.NylasResponse;
-import okhttp3.*;
 import org.jboss.logging.Logger;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-public class NylasEvent {
+public class ConnectedEvent {
 
 	@JsonProperty("account_id")
 	private String accountId;
@@ -40,9 +30,9 @@ public class NylasEvent {
 	private List<Participants> participants;
 	private When when;
 
-	private static Logger logger = Logger.getLogger("NylasEvent.class");
+	private static Logger logger = Logger.getLogger("ConnectedEvent.class");
 
-	public static String addEvent(NylasEvent event, String nylasId) {
+	public static String addEvent(ConnectedEvent event, String nylasId) {
 		return new NylasRequest(nylasId)
 				.addEvent(event);
 	}

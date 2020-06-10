@@ -1,8 +1,8 @@
 package com.hfla.huu;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hfla.service.calendar.models.ConnectedCalendar;
-import com.hfla.service.calendar.models.NylasEvent;
+import com.hfla.service.calendar.pojos.ConnectedCalendar;
+import com.hfla.service.calendar.pojos.ConnectedEvent;
 import okhttp3.*;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -72,7 +72,7 @@ public class CalendarIntegrationTest {
 
 		String calendarId = calendars.getCalendarId();
 		ObjectMapper mapper = new ObjectMapper();
-		NylasEvent nylasEvent = new NylasEvent();
+		ConnectedEvent nylasEvent = new ConnectedEvent();
 		nylasEvent.setCalendarId(calendarId);
 		nylasEvent.setBusy(true);
 		nylasEvent.setDescription("tracy testing");
@@ -102,7 +102,5 @@ public class CalendarIntegrationTest {
 		} catch (Exception e) {
 			System.out.println("error: " + e.getMessage());
 		}
-
-
 	}
 }

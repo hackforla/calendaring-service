@@ -1,17 +1,11 @@
-package com.hfla.service.calendar.models;
+package com.hfla.service.calendar.pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hfla.service.calendar.clients.NylasRequest;
-import com.nylas.*;
-import okhttp3.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class ConnectedCalendar {
@@ -33,7 +27,7 @@ public class ConnectedCalendar {
 	private String timezone;
 	private String location;
 	@JsonIgnore
-	private List<NylasEvent> events;
+	private List<ConnectedEvent> events;
 
 	public ConnectedCalendar() {}
 
@@ -42,7 +36,7 @@ public class ConnectedCalendar {
 		this.calendarId = calendarId;
 		this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
 		//this.accessToken = "sQB57ozr3wVNn1AYFX5077QHKMnpoF"; //nylasId: 9mnvr3qpqtvwkj4egbic7jcht
-		this.events = retrieveEvents();
+		this.events = getEvents();
 	}
 
 	public ConnectedCalendar(String nylasId) {
@@ -51,12 +45,12 @@ public class ConnectedCalendar {
 		//this.accessToken = "sQB57ozr3wVNn1AYFX5077QHKMnpoF";
 	}
 
-	public List<ConnectedCalendar> retrieveCalendars() {
+	public List<ConnectedCalendar> getCalendars() {
 		return new NylasRequest(nylasId)
 				.getCalendars();
 	}
 
-	public List<NylasEvent> retrieveEvents() {
+	public List<ConnectedEvent> getEvents() {
 		return new NylasRequest(nylasId)
 				.getEvents(calendarId);
 	}
@@ -83,10 +77,6 @@ public class ConnectedCalendar {
 
 	public String getCalendarId() {
 		return calendarId;
-	}
-
-	public List<NylasEvent> getEvents() {
-		return events;
 	}
 
 	public void setDescription(String description) {
@@ -129,7 +119,7 @@ public class ConnectedCalendar {
 		this.accessToken = accessToken;
 	}
 
-	public void setEvents(List<NylasEvent> events) {
+	public void setEvents(List<ConnectedEvent> events) {
 		this.events = events;
 	}
 }
