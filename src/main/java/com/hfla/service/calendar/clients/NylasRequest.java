@@ -71,6 +71,30 @@ public class NylasRequest {
 		return events;
 	}
 
+	public Void deleteEvent(String eventId) {
+		StringBuilder baseUrlBuilder  = new StringBuilder();
+		baseUrlBuilder.append("https://api.nylas.com/events/");
+		baseUrlBuilder.append(eventId);
+
+		Request request = buildNylasDeleteRequest(baseUrlBuilder.toString());
+		OkHttpClient client = new OkHttpClient();
+		Call call = client.newCall(request);
+
+		ObjectMapper mapper = new ObjectMapper();
+
+	    try (Response response = call.execute()) {
+	    	InputStream inputStream = response.body().byteStream();
+	    	InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+	    	String nylasResponse = mapper.readValue(inputStream, String.class);
+	    	logger.info("nylasResponse: " + nylasResponse);
+
+		} catch (IOException ioE) {
+	    	logger.error("error message: " + ioE.getMessage());
+		}
+
+	    return null;
+	}
+
 	public String addEvent(ConnectedEvent event) {
 		String baseUrl = "https://api.nylas.com/events";
 		ObjectMapper mapper = new ObjectMapper();
@@ -120,9 +144,9 @@ public class NylasRequest {
 	private Request buildNylasGetRequest(String baseUrl) {
 		return new Request.Builder()
 				.url(baseUrl)
-				.header("Accept", APPLICATION_JSON)
 				.header("Content-type", APPLICATION_JSON)
 				.header("Authorization", "Basic " + base64EncodeUTF8(accessToken + ":"))
+				.get()
 				.build();
 	}
 
@@ -132,6 +156,15 @@ public class NylasRequest {
 				.header("Content-Type", APPLICATION_JSON)
 				.header("Authorization", "Basic  " + base64EncodeUTF8(accessToken + ":"))
 				.post(requestBody)
+				.build();
+	}
+
+	private Request buildNylasDeleteRequest(String baseUrl) {
+		return new Request.Builder()
+				.url(baseUrl)
+				.header("Content-Type", APPLICATION_JSON)
+				.header("Authorization", "Basic " + base64EncodeUTF8(accessToken + ":"))
+				.delete()
 				.build();
 	}
 

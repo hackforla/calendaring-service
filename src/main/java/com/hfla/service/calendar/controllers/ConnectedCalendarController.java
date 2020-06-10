@@ -20,28 +20,34 @@ public class ConnectedCalendarController {
 	ResponseEntity<List<ConnectedEvent>> getEvents(@RequestParam(name="nylasId") String nylasId,
 												   @RequestParam(name = "calendarId") String calendarId) {
 
-		ConnectedCalendar connectedCalendar = new ConnectedCalendar(nylasId, calendarId);
-		List<ConnectedEvent> events = connectedCalendar.getEvents();
-
-		return new ResponseEntity<>(events, new HttpHeaders(), HttpStatus.OK);
+		return new ResponseEntity<>(new ConnectedCalendar(nylasId, calendarId).getEvents(),
+				new HttpHeaders(),
+				HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/calendars", consumes = "application/json", produces = "application/json")
 	ResponseEntity<List<ConnectedCalendar>> getConnectedCalendar(@RequestParam(name="nylasId") String nylasId) {
 
-		ConnectedCalendar connectedCalendar = new ConnectedCalendar(nylasId);
-		return new ResponseEntity<>(connectedCalendar.getCalendars(), new HttpHeaders(), HttpStatus.OK);
+		return new ResponseEntity<>(new ConnectedCalendar(nylasId).getCalendars(),
+				new HttpHeaders(),
+				HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/event", consumes = "application/json", produces = "application/json")
 	ResponseEntity<String> createEvent(@RequestBody ConnectedEvent nylasEvent, @RequestParam String nylasId) {
-		String eventId;
 
-		String accessToken = new ConnectedCalendar(nylasId).getAccessToken();
-		eventId = ConnectedEvent.addEvent(nylasEvent, accessToken);
+		return new ResponseEntity<>(ConnectedEvent.addEvent(nylasEvent,
+				new ConnectedCalendar(nylasId).getAccessToken()),
+				new HttpHeaders(),
+				HttpStatus.OK);
 
-		return new ResponseEntity<>(eventId, new HttpHeaders(), HttpStatus.OK);
+	}
 
+	@DeleteMapping(value = "/event/{id}", consumes = "application/json", produces = "application/json")
+	ResponseEntity<Void> deleteEvent(@PathVariable(name = "id") String eventId, @RequestParam String nylasId) {
+		return new ResponseEntity<>(ConnectedEvent.deleteEvent(eventId, new ConnectedCalendar(nylasId).getAccessToken()),
+				new HttpHeaders(),
+				HttpStatus.OK);
 	}
 
 }

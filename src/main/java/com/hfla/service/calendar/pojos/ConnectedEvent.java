@@ -37,6 +37,11 @@ public class ConnectedEvent {
 				.addEvent(event);
 	}
 
+	public static Void deleteEvent(String eventId, String nylasId) {
+		return new NylasRequest(nylasId)
+				.deleteEvent(eventId);
+	}
+
 	/**
 	 * Accessors and Mutators
 	 *
