@@ -29,14 +29,16 @@ public class ConnectedCalendar {
 	@JsonIgnore
 	private List<ConnectedEvent> events;
 
-	public ConnectedCalendar() {}
+	public ConnectedCalendar() {
+		this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
+	}
 
 	public ConnectedCalendar(String nylasId, String calendarId) {
 		this.nylasId = nylasId;
 		this.calendarId = calendarId;
 		this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
 		//this.accessToken = "sQB57ozr3wVNn1AYFX5077QHKMnpoF"; //nylasId: 9mnvr3qpqtvwkj4egbic7jcht
-		this.events = getEvents();
+		this.events = getEvents(nylasId, calendarId);
 	}
 
 	public ConnectedCalendar(String nylasId) {
@@ -45,12 +47,13 @@ public class ConnectedCalendar {
 		//this.accessToken = "sQB57ozr3wVNn1AYFX5077QHKMnpoF";
 	}
 
-	public List<ConnectedCalendar> getCalendars() {
+	@JsonIgnore
+	public List<ConnectedCalendar> getCalendars(String nylasId) {
 		return new NylasRequest(nylasId)
 				.getCalendars();
 	}
 
-	public List<ConnectedEvent> getEvents() {
+	public List<ConnectedEvent> getEvents(String nylasId, String calendarId) {
 		return new NylasRequest(nylasId)
 				.getEvents(calendarId);
 	}
@@ -63,13 +66,15 @@ public class ConnectedCalendar {
 		return nylasId;
 	}
 
-	public String getAccessToken() {
+	public String getAccessToken(String nylasId) {
 		return accessToken;
 	}
 
 	public String getName() {
 		return name;
 	}
+
+	public boolean isReadOnly() { return this.readOnly; }
 
 	public String getDescription() {
 		return description;
