@@ -25,7 +25,8 @@ public class NylasRequest {
 
 	public NylasRequest(String nylasId) {
 		this.nylasId = nylasId;
-		this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
+		this.accessToken = "hOr2b17h52LYtqWIrpwBHRIFeml94I";  //nylasId: 4c0vrpxw4tscjqzn83kh5w598
+		//this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
 		//this.accessToken = "sQB57ozr3wVNn1AYFX5077QHKMnpoF";
 	}
 

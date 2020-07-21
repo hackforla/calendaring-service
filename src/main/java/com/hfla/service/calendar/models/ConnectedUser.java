@@ -13,6 +13,6 @@ public class ConnectedUser {
 		this.id = id;
 		this.nylasId = nylasId;
 		this.accessToken = new ConnectedCredentials(nylasId).getAccessToken();
-		this.calendars = new ConnectedCalendar(nylasId).getCalendars();
+		this.calendars = new ConnectedCalendar().getCalendars(nylasId);
 	}
 }
