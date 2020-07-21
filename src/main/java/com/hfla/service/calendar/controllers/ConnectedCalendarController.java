@@ -19,8 +19,8 @@ import java.util.stream.Stream;
 @RestController
 @RequestMapping(path = "/calendar")
 public class ConnectedCalendarController {
-	//@Autowired
-	//Availability availability;
+	@Autowired
+	Availability availability;
 
 	@Autowired
 	ConnectedCalendar calendar;
@@ -67,8 +67,7 @@ public class ConnectedCalendarController {
 													  @RequestParam long startTime) {
 
 		List<ConnectedEvent> events = calendar.getEvents(nylasId, calendarId);
-		//return new ResponseEntity<>(availability.calculate(events.stream()),
-		return new ResponseEntity<>(null,
+		return new ResponseEntity<>(availability.calculate(events.stream()),
 				new HttpHeaders(),
 				HttpStatus.OK);
 

@@ -5,11 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hfla.service.calendar.clients.NylasRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 public class ConnectedCalendar {
 
 	private static Logger logger = LogManager.getFormatterLogger("ConnectedCalendar.class");
@@ -32,22 +30,20 @@ public class ConnectedCalendar {
 	private List<ConnectedEvent> events;
 
 	public ConnectedCalendar() {
-		this.accessToken = "hOr2b17h52LYtqWIrpwBHRIFeml94I";  //nylasId: 4c0vrpxw4tscjqzn83kh5w598
+		this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
 	}
 
 	public ConnectedCalendar(String nylasId, String calendarId) {
 		this.nylasId = nylasId;
 		this.calendarId = calendarId;
-		this.accessToken = "hOr2b17h52LYtqWIrpwBHRIFeml94I";  //nylasId: 4c0vrpxw4tscjqzn83kh5w598
-		//this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
+		this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
 		//this.accessToken = "sQB57ozr3wVNn1AYFX5077QHKMnpoF"; //nylasId: 9mnvr3qpqtvwkj4egbic7jcht
 		this.events = getEvents(nylasId, calendarId);
 	}
 
 	public ConnectedCalendar(String nylasId) {
 		this.nylasId = nylasId;
-		this.accessToken = "hOr2b17h52LYtqWIrpwBHRIFeml94I";  //nylasId: 4c0vrpxw4tscjqzn83kh5w598
-		//this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
+		this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
 		//this.accessToken = "sQB57ozr3wVNn1AYFX5077QHKMnpoF";
 	}
 
