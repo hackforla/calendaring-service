@@ -14,15 +14,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
 @RequestMapping(path = "/calendar")
 public class ConnectedCalendarController {
-	@Autowired
+	//@Autowired
 	Availability availability;
 
-	@Autowired
+	//@Autowired
 	ConnectedCalendar calendar;
 
 	private static Logger logger = LogManager.getLogManager().getLogger("ConnectedCalendarController.class");
@@ -31,7 +32,7 @@ public class ConnectedCalendarController {
 	ResponseEntity<List<ConnectedEvent>> getEvents(@RequestParam(name="nylasId") String nylasId,
 												   @RequestParam(name = "calendarId") String calendarId) {
 
-		return new ResponseEntity<>(calendar.getEvents(nylasId, calendarId),
+		return new ResponseEntity<>(new ConnectedCalendar().getEvents(nylasId, calendarId),
 				new HttpHeaders(),
 				HttpStatus.OK);
 	}
@@ -39,7 +40,7 @@ public class ConnectedCalendarController {
 	@GetMapping(value = "/calendars", consumes = "application/json", produces = "application/json")
 	ResponseEntity<List<ConnectedCalendar>> getConnectedCalendar(@RequestParam(name="nylasId") String nylasId) {
 
-		return new ResponseEntity<>(calendar.getCalendars(nylasId),
+		return new ResponseEntity<>(new ConnectedCalendar().getCalendars(nylasId),
 				new HttpHeaders(),
 				HttpStatus.OK);
 	}
@@ -48,7 +49,7 @@ public class ConnectedCalendarController {
 	ResponseEntity<String> createEvent(@RequestBody ConnectedEvent nylasEvent, @RequestParam String nylasId) {
 
 		return new ResponseEntity<>(ConnectedEvent.addEvent(nylasEvent,
-				calendar.getAccessToken(nylasId)),
+				new ConnectedCalendar().getAccessToken(nylasId)),
 				new HttpHeaders(),
 				HttpStatus.OK);
 
@@ -56,7 +57,7 @@ public class ConnectedCalendarController {
 
 	@DeleteMapping(value = "/event/{id}", consumes = "application/json", produces = "application/json")
 	ResponseEntity<Void> deleteEvent(@PathVariable(name = "id") String eventId, @RequestParam String nylasId) {
-		return new ResponseEntity<>(ConnectedEvent.deleteEvent(eventId, calendar.getAccessToken(nylasId)),
+		return new ResponseEntity<>(ConnectedEvent.deleteEvent(eventId, new ConnectedCalendar().getAccessToken(nylasId)),
 				new HttpHeaders(),
 				HttpStatus.OK);
 	}
@@ -66,8 +67,8 @@ public class ConnectedCalendarController {
 													  @RequestParam String calendarId,
 													  @RequestParam long startTime) {
 
-		List<ConnectedEvent> events = calendar.getEvents(nylasId, calendarId);
-		return new ResponseEntity<>(availability.calculate(events.stream()),
+		List<ConnectedEvent> events = new ConnectedCalendar().getEvents(nylasId, calendarId);
+		return new ResponseEntity<>(new Availability().calculate(events.stream().collect(Collectors.toList())),
 				new HttpHeaders(),
 				HttpStatus.OK);
 

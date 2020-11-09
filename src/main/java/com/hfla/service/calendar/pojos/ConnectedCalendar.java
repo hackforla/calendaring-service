@@ -30,25 +30,34 @@ public class ConnectedCalendar {
 	private List<ConnectedEvent> events;
 
 	public ConnectedCalendar() {
-		this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
+		//this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: 4c0vrpxw4tscjqzn83kh5w598
+		this.accessToken = "BVoFdO9uZXRwaSAgkfaTXPtRS8XjJP"; //nylasId: 3h070kon7pzwf64v8uj5bomof
 	}
 
 	public ConnectedCalendar(String nylasId, String calendarId) {
 		this.nylasId = nylasId;
 		this.calendarId = calendarId;
-		this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
+		this.accessToken = "BVoFdO9uZXRwaSAgkfaTXPtRS8XjJP"; //nylasId: 3h070kon7pzwf64v8uj5bomof
+		//this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
 		//this.accessToken = "sQB57ozr3wVNn1AYFX5077QHKMnpoF"; //nylasId: 9mnvr3qpqtvwkj4egbic7jcht
 		this.events = getEvents(nylasId, calendarId);
 	}
 
 	public ConnectedCalendar(String nylasId) {
 		this.nylasId = nylasId;
-		this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
+		this.accessToken = "BVoFdO9uZXRwaSAgkfaTXPtRS8XjJP"; //nylasId: 3h070kon7pzwf64v8uj5bomof
+		//this.accessToken = "FSlSGssL1k7VbJodSUfJUKYrgQOBzG"; //nylasId: hsej56l19s6h4nvtmwcqekyv
 		//this.accessToken = "sQB57ozr3wVNn1AYFX5077QHKMnpoF";
 	}
 
 	@JsonIgnore
 	public List<ConnectedCalendar> getCalendars(String nylasId) {
+		return new NylasRequest(nylasId)
+				.getCalendars();
+	}
+
+	@JsonIgnore
+	public List<ConnectedCalendar> getCalendars() {
 		return new NylasRequest(nylasId)
 				.getCalendars();
 	}

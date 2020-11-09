@@ -33,7 +33,7 @@ public class AvailabilityController {
 			if (!calendar.isReadOnly()) {
 				ResponseEntity<List<ConnectedEvent>> eventsResponseEntity = connectedCalendarController.getEvents(nylasId, calendar.getCalendarId());
 				List<ConnectedEvent> events = eventsResponseEntity.getBody();
-				availability = new Availability(events).calculate();
+				availability = new Availability().calculate(events);
 			}
 		}
 

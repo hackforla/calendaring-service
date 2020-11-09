@@ -2,10 +2,14 @@ package com.hfla.service.calendar.pojos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hfla.service.calendar.clients.NylasRequest;
+import lombok.Getter;
+import lombok.Setter;
 import org.jboss.logging.Logger;
 
 import java.util.List;
 
+@Getter
+@Setter
 public class ConnectedEvent {
 
 	@JsonProperty("account_id")
@@ -14,6 +18,10 @@ public class ConnectedEvent {
 	@JsonProperty("calendar_id")
 	private String calendarId;
 	private String description;
+	@JsonProperty("master_event_id")
+	private String masterEventId;
+	@JsonProperty("original_start_time")
+	private long originalStartTime;
 	@JsonProperty("id")
 	private String eventId;
 	private String location;
