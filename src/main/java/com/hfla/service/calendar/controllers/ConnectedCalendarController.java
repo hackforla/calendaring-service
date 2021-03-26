@@ -11,6 +11,7 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
@@ -68,7 +69,10 @@ public class ConnectedCalendarController {
 													  @RequestParam long startTime) {
 
 		List<ConnectedEvent> events = new ConnectedCalendar().getEvents(nylasId, calendarId);
-		return new ResponseEntity<>(new Availability().calculate(events.stream().collect(Collectors.toList())),
+		//return new ResponseEntity<>(new Availability().calculate(events.stream().collect(Collectors.toList())),
+		//		new HttpHeaders(),
+		//		HttpStatus.OK);
+		return new ResponseEntity<>(new ArrayList<Availability>(),
 				new HttpHeaders(),
 				HttpStatus.OK);
 

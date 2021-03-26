@@ -3,14 +3,13 @@ package com.hfla.service.calendar.controllers;
 import com.hfla.service.calendar.pojos.Availability;
 import com.hfla.service.calendar.pojos.ConnectedCalendar;
 import com.hfla.service.calendar.pojos.ConnectedEvent;
+import com.hfla.service.calendar.repositories.AvailabilityRepository;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +21,14 @@ public class AvailabilityController {
 	@Autowired
 	ConnectedCalendarController connectedCalendarController;
 
-	@GetMapping(name = "/", consumes = "application/json", produces = "application/json")
-	ResponseEntity<List<Availability>> calculateAvailability(@PathVariable String nylasId) {
+	@Autowired
+	AvailabilityRepository availabilityRepository;
 
+	//calculates the availability for a given user based on the nylasId and a start/end time
+	@GetMapping(value = "/list", consumes = "application/json", produces = "application/json")
+	ResponseEntity<List<Availability>> calculateAvailability(@RequestParam(name =  "nylasId") String nylasId) {//,
+															 //@RequestParam DateTime startTime,
+															 //@RequestParam DateTime endTimtParam) {
 		List<Availability> availability = new ArrayList<>();
 
 		ResponseEntity<List<ConnectedCalendar>> calendarResponseEntity = connectedCalendarController.getConnectedCalendar(nylasId);
@@ -38,5 +42,14 @@ public class AvailabilityController {
 		}
 
 		return new ResponseEntity<>(availability, new HttpHeaders(), HttpStatus.OK);
+	}
+
+
+	@PutMapping(value = "/", consumes = "application/json", produces = "application/json")
+	ResponseEntity<HttpStatus> getAvailability(@PathVariable String nylasId,
+											   @PathVariable Availability availability) {
+
+		availabilityRepository.save(availability);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
