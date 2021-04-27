@@ -45,9 +45,9 @@ public class AvailabilityController {
 	}
 
 
-	@PutMapping(value = "/", consumes = "application/json", produces = "application/json")
+	@PostMapping(value = "/", consumes = "application/json", produces = "application/json")
 	ResponseEntity<HttpStatus> getAvailability(@PathVariable String nylasId,
-											   @PathVariable Availability availability) {
+											   @RequestBody Availability availability) {
 
 		availabilityRepository.save(availability);
 		return new ResponseEntity<>(HttpStatus.OK);
