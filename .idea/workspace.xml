@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78ee079c-91f4-49b9-b724-b024175ec0bc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/MeetingType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/repositories/MeetingTypeRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/AvailabilityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/AvailabilityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Availability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Availability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -51,20 +49,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/TestMe.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#230#231#0" expanded="true" />
-                <element signature="e#283#284#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/repositories/MeetingTypeRepository.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -98,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1207">
-              <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
+            <state relative-caret-position="249">
+              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -170,7 +154,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/ConnectedCalendar.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Participants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/ConnectedEvent.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/ConnectedCalendarController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/repositories/AvailabilityRepository.java" />
@@ -180,6 +163,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Availability.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/MeetingType.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/TestMe.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -551,7 +535,7 @@
     <frame x="35" y="0" width="1934" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6785714" visible="true" weight="0.21931697" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6785714" visible="true" weight="0.21931697" />
       <window_info id="Structure" order="1" sideWeight="0.32142857" side_tool="true" visible="true" weight="0.21931697" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -559,7 +543,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32962137" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38780206" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38780206" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4997118" weight="0.5952649" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -978,13 +962,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
-          <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/ringDNA-repo/server/app/models/v2/PersonalCalendarAvailability.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1056,6 +1033,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/TestMe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/MeetingType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1066,15 +1055,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/TestMe.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#230#231#0" expanded="true" />
-            <element signature="e#283#284#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="249">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
         </state>
       </provider>
     </entry>

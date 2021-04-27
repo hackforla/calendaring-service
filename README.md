@@ -1,6 +1,7 @@
 # Hack For LA: Calendaring Service
 
-The Calendaring Service is an integration service that serves as a building block for Hack for LA projects that require calendar services (e.g. the ability to schedule meetings).  {Project Name} helps {target users} accomplish {goal of project}. The {app/site/thing you're building}'s main features include {very brief feature descriptions}.
+The Calendaring Service is an integration service that serves as a building block for Hack for LA projects that require calendar services (e.g. the ability to schedule meetings).  
+#blah blah --> TODO {Project Name} helps {target users} accomplish {goal of project}. The {app/site/thing you're building}'s main features include {very brief feature descriptions}.
 
 ### Project context
 
@@ -26,12 +27,21 @@ Remember to provide direct links to each channel.
 
 
 
-## Installation instructions
+## How to build and run the Calendaring Microservicde
 
-1. Step-by-step instructions help new contributors get a development environment up and running quickly.
-2. You'll want to find the balance between being specific enough for novices to follow, without being so specific that you reinvent the wheel by providing overly-basic instructions that can be found elsewhere.
-3. Feel free to adapt this section and its sub-sections to your own processes.
-4. Alternatively, you can move everything from *Installation instructions* through *Testing* to a separate **Contributing.md** file to keep your **ReadMe.md** more succinct.
+Pre-requisites
+Ask Google where to get it from and how to install it. Beware of OS dependencies.
+JDK 1.8+ 
+MAVEN
+PosGres
+
+1. install all of the pre-requisites
+2. clone this repo
+3. cd into the top level of the repo and run "mvn package"
+4. cd into the target directory that was created for you
+4. run "java -jar CalendaringMicroservice-0.0.1-SNAPSHOT.jar"
+
+That's it!  Your calendaring microservice is now up and running and ready to receive requests.  It should be up on port 8080. If you want to test the endpoints outside of the calendaring-fe service, you'll need postman to do it.
 
 
 ### Working with issues
