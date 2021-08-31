@@ -43,7 +43,7 @@ PosGres
 
 That's it!  Your calendaring microservice is now up and running and ready to receive requests.  It should be up on port 8080. If you want to test the endpoints outside of the calendaring-fe service, you'll need postman to do it.
 
-
+To see the API documentation, we have set up Swagger.  You can access the Swagger API Documentation locally from: http://localhost:8080/calendaring-service/swagger-ui.html#/
 ### Working with issues
 
 - Explain how to submit a bug.
