@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 import java.util.function.Predicate;
 
-// test
+// more tests
 
 @Configuration
 @EnableSwagger2
