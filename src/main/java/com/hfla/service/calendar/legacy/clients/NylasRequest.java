@@ -1,10 +1,11 @@
-package com.hfla.service.calendar.clients;
+package com.hfla.service.calendar.legacy.clients;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hfla.service.calendar.pojos.ConnectedCalendar;
-import com.hfla.service.calendar.pojos.ConnectedEvent;
+import com.hfla.service.calendar.legacy.pojos.ConnectedCalendar;
+import com.hfla.service.calendar.legacy.pojos.ConnectedEvent;
+
 import okhttp3.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

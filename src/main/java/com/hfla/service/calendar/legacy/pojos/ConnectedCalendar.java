@@ -1,8 +1,9 @@
-package com.hfla.service.calendar.pojos;
+package com.hfla.service.calendar.legacy.pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.hfla.service.calendar.clients.NylasRequest;
+import com.hfla.service.calendar.legacy.clients.NylasRequest;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

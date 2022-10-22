@@ -1,8 +1,5 @@
-package com.hfla.service.calendar.controllers;
+package com.hfla.service.calendar.legacy.controllers;
 
-import com.hfla.service.calendar.pojos.Availability;
-import com.hfla.service.calendar.pojos.ConnectedCalendar;
-import com.hfla.service.calendar.pojos.ConnectedEvent;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.hfla.service.calendar.legacy.pojos.Availability;
+import com.hfla.service.calendar.legacy.pojos.ConnectedCalendar;
+import com.hfla.service.calendar.legacy.pojos.ConnectedEvent;
 
 import java.util.ArrayList;
 import java.util.List;

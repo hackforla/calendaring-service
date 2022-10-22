@@ -1,7 +1,7 @@
-package com.hfla.service.calendar.models;
-import com.hfla.service.calendar.pojos.ConnectedCalendar;
-
+package com.hfla.service.calendar.legacy.models;
 import java.util.List;
+
+import com.hfla.service.calendar.legacy.pojos.ConnectedCalendar;
 
 public class ConnectedUser {
 	private String nylasId;
