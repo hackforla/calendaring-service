@@ -33,21 +33,27 @@ public class CalendarController {
 
   @GetMapping(path= "/calendars")
   public RemoteCollection<Calendar> getCalendars() throws IOException, RequestFailedException {
+      System.out.println("Getting calendars");
       return calendarService.getCalendars();
   }
   
   @GetMapping(path = "/freebusy")
   public List<FreeBusy> getFreeBusy() throws IOException, RequestFailedException {
+      System.out.println("Getting free busy");
+
       return calendarService.checkFreeBusy();
   }
 
   @GetMapping(path = "/availability")
   public List<TimeSlot> getAvailability() throws IOException, RequestFailedException {
+      System.out.println("Getting availability");
+
       return calendarService.checkAvailability();
   }
 
   @GetMapping(path = "/events")
   public RemoteCollection<Event> getEvents() throws IOException, RequestFailedException {
+      System.out.println("Getting events");
       return eventService.getEvents();
   }
 }
