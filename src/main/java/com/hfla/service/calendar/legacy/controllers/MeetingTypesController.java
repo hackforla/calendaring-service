@@ -1,7 +1,8 @@
-package com.hfla.service.calendar.controllers;
+package com.hfla.service.calendar.legacy.controllers;
 
-import com.hfla.service.calendar.pojos.MeetingType;
-import com.hfla.service.calendar.repositories.MeetingTypeRepository;
+import com.hfla.service.calendar.legacy.pojos.MeetingType;
+import com.hfla.service.calendar.legacy.repositories.MeetingTypeRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,8 +1,9 @@
 package com.hfla.huu;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hfla.service.calendar.pojos.ConnectedCalendar;
-import com.hfla.service.calendar.pojos.ConnectedEvent;
+import com.hfla.service.calendar.legacy.pojos.ConnectedCalendar;
+import com.hfla.service.calendar.legacy.pojos.ConnectedEvent;
+
 import okhttp3.*;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

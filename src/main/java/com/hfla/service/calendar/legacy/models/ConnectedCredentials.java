@@ -1,4 +1,4 @@
-package com.hfla.service.calendar.models;
+package com.hfla.service.calendar.legacy.models;
 
 public class ConnectedCredentials {
 

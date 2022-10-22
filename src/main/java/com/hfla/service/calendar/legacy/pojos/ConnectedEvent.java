@@ -1,7 +1,8 @@
-package com.hfla.service.calendar.pojos;
+package com.hfla.service.calendar.legacy.pojos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.hfla.service.calendar.clients.NylasRequest;
+import com.hfla.service.calendar.legacy.clients.NylasRequest;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.jboss.logging.Logger;

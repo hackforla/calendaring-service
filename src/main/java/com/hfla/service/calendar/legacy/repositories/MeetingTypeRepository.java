@@ -1,8 +1,9 @@
-package com.hfla.service.calendar.repositories;
+package com.hfla.service.calendar.legacy.repositories;
 
-import com.hfla.service.calendar.pojos.MeetingType;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import com.hfla.service.calendar.legacy.pojos.MeetingType;
 
 import java.util.List;
 

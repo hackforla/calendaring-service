@@ -13,26 +13,26 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 import java.util.function.Predicate;
 
-// more tests
+// // more tests
 
-@Configuration
-@EnableSwagger2
-public class SpringFoxConfig {
-	@Bean
-	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.apis(RequestHandlerSelectors.any())
-				.paths(PathSelectors.any())
-				.build();
-	}
+// @Configuration
+// @EnableSwagger2
+// public class SpringFoxConfig {
+// 	@Bean
+// 	public Docket api() {
+// 		return new Docket(DocumentationType.SWAGGER_2)
+// 				.select()
+// 				.apis(RequestHandlerSelectors.any())
+// 				.paths(PathSelectors.any())
+// 				.build();
+// 	}
 
-	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("JavaInUse API")
-				.description("JavaInUse API reference for developers")
-				.termsOfServiceUrl("http://javainuse.com")
-				.licenseUrl("javainuse@gmail.com").version("1.0").build();
-	}
+// 	private ApiInfo apiInfo() {
+// 		return new ApiInfoBuilder().title("JavaInUse API")
+// 				.description("JavaInUse API reference for developers")
+// 				.termsOfServiceUrl("http://javainuse.com")
+// 				.licenseUrl("javainuse@gmail.com").version("1.0").build();
+// 	}
 
 
-}
+// }
