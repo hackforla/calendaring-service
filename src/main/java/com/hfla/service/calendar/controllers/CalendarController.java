@@ -39,7 +39,7 @@ public class CalendarController {
   
   @GetMapping(path = "/freebusy")
   public List<FreeBusy> getFreeBusy() throws IOException, RequestFailedException {
-      System.out.println("Getting free busy");
+      System.out.println("Getting the free busy");
 
       return calendarService.checkFreeBusy();
   }
