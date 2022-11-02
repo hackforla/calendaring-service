@@ -6,6 +6,8 @@ services:
       - "8080:8080"
     env_file:
       - .env
+    environment:
+      - POSTGRES_HOST=db
     depends_on:
       - db
   db:
@@ -15,7 +17,6 @@ services:
       - db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=calendar
-      - POSTGRES_HOST=db
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
