@@ -5,6 +5,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.hfla.service.calendar.pojos.Calendars;
 import com.hfla.service.calendar.pojos.Events;
 
 @Service
@@ -18,6 +19,10 @@ public class CronofyService {
 
   public Events getEvents() {
     return this.webClient.get().uri("/v1/events?tzid=Etc/UTC").retrieve().bodyToMono(Events.class).block();
+  }
+
+  public Calendars getCalendars() {
+    return this.webClient.get().uri("/v1/calendars").retrieve().bodyToMono(Calendars.class).block();
   }
 
 }

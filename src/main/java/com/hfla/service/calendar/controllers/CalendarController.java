@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hfla.service.calendar.pojos.Calendars;
 import com.hfla.service.calendar.services.CalendarService;
+import com.hfla.service.calendar.services.CronofyService;
 import com.hfla.service.calendar.services.EventService;
 import com.nylas.Calendar;
 import com.nylas.Event;
@@ -19,22 +21,24 @@ import com.nylas.TimeSlot;
 
 
 @RestController
-@RequestMapping(path = "/calendar")
+@RequestMapping(path = "/calendars")
 public class CalendarController {
 
   private final CalendarService calendarService;
   private final EventService eventService;
+  private final CronofyService cronofyService;
 
   @Autowired
-  public CalendarController(CalendarService calendarService, EventService eventService) {
+  public CalendarController(CalendarService calendarService, EventService eventService, CronofyService cronofyService) {
     this.calendarService = calendarService;
     this.eventService = eventService;
+    this.cronofyService = cronofyService;
   }
 
-  @GetMapping(path= "/calendars")
-  public RemoteCollection<Calendar> getCalendars() throws IOException, RequestFailedException {
+  @GetMapping
+  public Calendars getCalendars() throws IOException, RequestFailedException {
       System.out.println("Getting calendars");
-      return calendarService.getCalendars();
+      return cronofyService.getCalendars();
   }
   
   @GetMapping(path = "/freebusy")
