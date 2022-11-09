@@ -23,5 +23,10 @@
     "name": "google.client.id",
     "type": "java.lang.String",
     "description": "A description for 'google.client.id'"
+  },
+  {
+    "name": "cronofy.access.token",
+    "type": "java.lang.String",
+    "description": "A description for 'cronofy.access.token'"
   }
 ]}
