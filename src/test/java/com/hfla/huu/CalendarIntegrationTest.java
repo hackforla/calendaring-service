@@ -25,49 +25,47 @@ public class CalendarIntegrationTest {
 
 	@Test
 	public void getEventsTestUsingNylas() {
-		//arrange
+		// arrange
 		String nylasId = "9mnvr3qpqtvwkj4egbic7jcht";
-		//String url = "/calendar/events?nylasId=" + nylasId;
+		// String url = "/calendar/events?nylasId=" + nylasId;
 		String url = "http://localhost:8080";
-		URI uri = UriComponentsBuilder.fromHttpUrl(url)
-				.path("/calendar/events")
-				.queryParam("nylasId", nylasId)
-				.build().toUri();
+		URI uri = UriComponentsBuilder.fromHttpUrl(url).path("/calendar/events")
+				.queryParam("nylasId", nylasId).build().toUri();
 
-		//act
-		ResponseEntity<ConnectedCalendar> response =  restTemplate.getForEntity(uri, ConnectedCalendar.class);
+		// act
+		ResponseEntity<ConnectedCalendar> response =
+				restTemplate.getForEntity(uri, ConnectedCalendar.class);
 
-		//assert
-		//Assertions.assertThat(response.getBody().getEvents()).isNotNull();
+		// assert
+		// Assertions.assertThat(response.getBody().getEvents()).isNotNull();
 	}
 
 	@Test
 	public void getCalendars() {
-		//arrange
+		// arrange
 		String nylasId = "9mnvr3qpqtvwkj4egbic7jcht";
 
-		//act
+		// act
 		ConnectedCalendar calendars = getCalendars(nylasId);
 
-		//assert
+		// assert
 		Assertions.assertThat(calendars).isNotNull();
 	}
 
 	private ConnectedCalendar getCalendars(String nylasId) {
 
 		String url = "http://localhost:8080";
-		URI uri = UriComponentsBuilder.fromHttpUrl(url)
-				.path("/calendar/calendars")
-				.queryParam("nylasId", nylasId)
-				.build().toUri();
+		URI uri = UriComponentsBuilder.fromHttpUrl(url).path("/calendar/calendars")
+				.queryParam("nylasId", nylasId).build().toUri();
 
-		ResponseEntity<ConnectedCalendar> response = restTemplate.getForEntity(uri, ConnectedCalendar.class);
+		ResponseEntity<ConnectedCalendar> response =
+				restTemplate.getForEntity(uri, ConnectedCalendar.class);
 		return response.getBody();
 	}
 
 	@Test
 	public void addEvent() {
-		//arrange
+		// arrange
 		String nylasId = "9mnvr3qpqtvwkj4egbic7jcht";
 		ConnectedCalendar calendars = getCalendars(nylasId);
 
@@ -77,9 +75,10 @@ public class CalendarIntegrationTest {
 		nylasEvent.setCalendarId(calendarId);
 		nylasEvent.setBusy(true);
 		nylasEvent.setDescription("tracy testing");
-		//nylasEvent.setStartTime(new DateTime().plusDays(1).plusMinutes(30).getMillis());
-		//nylasEvent.setEndTime(new DateTime().plusDays(1).plusHours(1).getMillis());
-		//nylasEvent.setParticipants(Arrays.asList("sunnyskies0333@gmail.com", "myshelly0211@yahoo.com"));
+		// nylasEvent.setStartTime(new DateTime().plusDays(1).plusMinutes(30).getMillis());
+		// nylasEvent.setEndTime(new DateTime().plusDays(1).plusHours(1).getMillis());
+		// nylasEvent.setParticipants(Arrays.asList("sunnyskies0333@gmail.com",
+		// "myshelly0211@yahoo.com"));
 		String requestBody = null;
 
 		try {
@@ -91,14 +90,11 @@ public class CalendarIntegrationTest {
 		String url = "https://localhost:8080";
 		OkHttpClient client = new OkHttpClient();
 		RequestBody body = RequestBody.create(MediaType.parse("application/json"), requestBody);
-		Request request = new Request.Builder()
-				.url(url)
-				.post(body)
-				.build();
-		//act
-		Call call  = client.newCall(request);
+		Request request = new Request.Builder().url(url).post(body).build();
+		// act
+		Call call = client.newCall(request);
 		try (Response response = call.execute()) {
-			//assert
+			// assert
 			Assertions.assertThat(response.body()).isNotNull();
 		} catch (Exception e) {
 			System.out.println("error: " + e.getMessage());

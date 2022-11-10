@@ -34,22 +34,12 @@ public class CronofyService {
   }
 
   public String createEvent(Event event) {
+    String calendarId = this.getCalendars().getCalendars().get(0).getCalendarId();
+
     return this.webClient.post()
-        .uri(uriBuilder -> uriBuilder.path("/v1/calendars/{calendarId}/events")
-            .build("cal_Y2sBYDWC7ABeefcA_UU9oqpv0li@bRbfNEDeOsQ"))
+        .uri(uriBuilder -> uriBuilder.path("/v1/calendars/{calendarId}/events").build(calendarId))
         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
         .body(Mono.just(event), Event.class).retrieve().bodyToMono(String.class).block();
   }
 
 }
-
-
-// "event_id": "qTtZdczOccgaPncGJaCiLg",
-// "summary": "Board meeting",
-// "description": "Discuss plans for the next quarter.",
-// "start": "2022-11-11T15:30:00Z",
-// "end": "2022-11-11T17:00:00Z",
-// "location": {
-// "description": "Board room"
-// }
-// }
