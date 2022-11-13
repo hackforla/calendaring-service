@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "nylas.client.id",
+    "type": "java.lang.String",
+    "description": "A description for 'nylas.client.id'"
+  },
+  {
+    "name": "nylas.client.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'nylas.client.secret'"
+  },
+  {
+    "name": "nylas.redirect.uri",
+    "type": "java.lang.String",
+    "description": "A description for 'nylas.redirect.uri'"
+  },
+  {
+    "name": "access.token",
+    "type": "java.lang.String",
+    "description": "A description for 'access.token'"
+  },
+  {
+    "name": "google.client.id",
+    "type": "java.lang.String",
+    "description": "A description for 'google.client.id'"
+  }
+]}
