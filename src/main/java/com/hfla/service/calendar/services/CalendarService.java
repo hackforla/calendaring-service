@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -32,10 +33,19 @@ public class CalendarService {
 
   @Value("${access.token}")
   private String accessToken;
+  
+  private final EventService eventService;
+
+  EventService e;
 
   private static final Logger log = LogManager.getLogger(CalendarService.class);
 
   private static NylasClient client = new NylasClient();
+  
+  @Autowired
+  public CalendarService(EventService eventService) {
+    this.eventService = eventService;
+  }
 
   public RemoteCollection<Calendar> getCalendars() throws IOException, RequestFailedException {
       NylasAccount account = client.account(accessToken);
@@ -43,6 +53,14 @@ public class CalendarService {
       return calendars;
   }
 
+  //TODO: 
+  
+  public void createBusyRange(Instant start, Instant end) throws IOException, RequestFailedException {
+	  eventService.createEvent(start, end, "unavailable" , "", false);
+  }
+  
+
+  
   public Calendar getPrimaryCalendar() throws IOException, RequestFailedException {
       NylasAccount account = client.account(accessToken);
 
@@ -78,7 +96,7 @@ public class CalendarService {
       return freeBusy;
   }
 
-  public List<TimeSlot> checkAvailability() throws IOException, RequestFailedException {
+  public List<TimeSlot> checkAvailability(Instant start, Instant end) throws IOException, RequestFailedException {
     NylasAccount account = client.account(accessToken);
     Calendars calendars = account.calendars();
     Calendar primaryCalendar = getPrimaryCalendar();
@@ -87,10 +105,9 @@ public class CalendarService {
 
     FreeBusyCalendars freeBusyCalendars = new FreeBusyCalendars(accountId, Collections.singletonList(calendarId));
       SingleAvailabilityQuery query = new SingleAvailabilityQuery()
-        .startTime(Instant.now().minus(10, ChronoUnit.HOURS))
-        .endTime(Instant.now().plus(4, ChronoUnit.HOURS))
-        .durationMinutes(30)
-        .intervalMinutes(10)
+        .startTime(start)
+        .endTime(end)
+       
         .calendars(freeBusyCalendars);
     Availability availability = calendars.availability(query);
     
