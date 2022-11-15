@@ -1,6 +1,7 @@
 package com.hfla.service.calendar.controllers;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,12 +44,11 @@ public class CalendarController {
 
       return calendarService.checkFreeBusy();
   }
-
+  //TODO: getAvailability should require  start date and enddate.
   @GetMapping(path = "/availability")
   public List<TimeSlot> getAvailability() throws IOException, RequestFailedException {
       System.out.println("Getting availability");
-
-      return calendarService.checkAvailability();
+      return calendarService.checkAvailability(Instant.parse("0"),Instant.parse("1") );
   }
 
   @GetMapping(path = "/events")
