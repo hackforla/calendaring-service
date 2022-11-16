@@ -13,7 +13,6 @@ import com.nylas.RemoteCollection;
 import com.nylas.RequestFailedException;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
@@ -26,12 +25,14 @@ public class EventController {
     this.eventService = eventService;
   }
 
-  //TODO: event should return values like start date, enddate and description.
-  @PostMapping(value="/create")
-  public Event createEvent(@RequestParam String startDate, @RequestParam String endDate, @RequestParam String description,
-		  @RequestParam String location, @RequestParam boolean notify) throws IOException, RequestFailedException {
-	  
-    return eventService.createEvent(Instant.parse(startDate),Instant.parse(endDate),description,location,notify );
+  // TODO: event should return values like start date, enddate and description.
+  @PostMapping(value = "/create")
+  public Event createEvent(@RequestParam String startDate, @RequestParam String endDate,
+      @RequestParam String description, @RequestParam String location, @RequestParam boolean notify)
+      throws IOException, RequestFailedException {
+
+    return eventService.createEvent(Instant.parse(startDate), Instant.parse(endDate), description,
+        location, notify);
   }
 
   @GetMapping(value = "/list")
