@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import com.nylas.Calendar;
 import com.nylas.Event;
+import com.nylas.Event.Timespan;
+import com.nylas.Event.When;
 import com.nylas.EventQuery;
 import com.nylas.NylasAccount;
 import com.nylas.NylasClient;
@@ -46,25 +48,29 @@ public class EventService {
 
     return events;
   }
+  
+  public RemoteCollection<Event> getEventsInRange(Instant start, Instant end) throws IOException, RequestFailedException {
+	  NylasAccount account = client.account(accessToken);
+	    Calendar primaryCalendar = calendarService.getPrimaryCalendar();
+	    EventQuery query = new EventQuery().calendarId(primaryCalendar.getId()).startsAfter(start).endsBefore(end);
+	    RemoteCollection<Event> events = account.events().list(query);
 
-  public Event createEvent() throws IOException, RequestFailedException {
+	    return events;
+  }
+
+  public Event createEvent(Instant start, Instant end, String description, String location, boolean notify) throws IOException, RequestFailedException {
     NylasAccount account = client.account(accessToken);
     Calendar primaryCalendar = calendarService.getPrimaryCalendar();
+    
+    Timespan ts =  new Event.Timespan(start,end  );
+    
+    
+    Event event = new Event(primaryCalendar.getId(), ts);
 
-    Event.When when = null;
-    LocalDate today = LocalDate.now();
-    when = new Event.Date(today);
-    when = new Event.Datespan(today, today.plusDays(1));
-    Instant sixPmUtc = today.atTime(21, 0).toInstant(ZoneOffset.UTC);
-    when = new Event.Time(sixPmUtc);
-    when = new Event.Timespan(sixPmUtc, sixPmUtc.plus(1, ChronoUnit.HOURS));
-
-    Event event = new Event(primaryCalendar.getId(), when);
-
-    event.setLocation("My house");
-    event.setDescription("This is a test event");
+    event.setLocation(location);
+    event.setDescription(description);
     event.setBusy(true);
-    Event newEvent = account.events().create(event, false);
+    Event newEvent = account.events().create(event, notify);
     return newEvent;
   }
 

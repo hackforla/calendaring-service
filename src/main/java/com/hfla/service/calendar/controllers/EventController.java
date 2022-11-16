@@ -1,6 +1,7 @@
 package com.hfla.service.calendar.controllers;
 
 import java.io.IOException;
+import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +26,12 @@ public class EventController {
     this.eventService = eventService;
   }
 
-  @PostMapping(value = "/create")
-  public Event createEvent(@RequestBody Event event) throws IOException, RequestFailedException {
-    return eventService.createEvent();
+  //TODO: event should return values like start date, enddate and description.
+  @PostMapping(value="/create")
+  public Event createEvent(@RequestParam String startDate, @RequestParam String endDate, @RequestParam String description,
+		  @RequestParam String location, @RequestParam boolean notify) throws IOException, RequestFailedException {
+	  
+    return eventService.createEvent(Instant.parse(startDate),Instant.parse(endDate),description,location,notify );
   }
 
   @GetMapping(value = "/list")

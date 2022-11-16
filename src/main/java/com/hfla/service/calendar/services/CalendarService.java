@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -30,84 +31,99 @@ import com.nylas.TimeSlot;
 @Component
 public class CalendarService {
 
-    @Value("${access.token}")
-    private String accessToken;
+  @Value("${access.token}")
+  private String accessToken;
+  
+  private final EventService eventService;
 
-    private static final Logger log = LogManager.getLogger(CalendarService.class);
+  EventService e;
 
-    private static NylasClient client = new NylasClient();
+  private static final Logger log = LogManager.getLogger(CalendarService.class);
 
-    public RemoteCollection<Calendar> getCalendars() throws IOException, RequestFailedException {
-        NylasAccount account = client.account(accessToken);
-        RemoteCollection<Calendar> calendars = account.calendars().list();
-        return calendars;
-    }
+  private static NylasClient client = new NylasClient();
+  
+  @Autowired
+  public CalendarService(EventService eventService) {
+    this.eventService = eventService;
+  }
 
-    public Calendar getPrimaryCalendar() throws IOException, RequestFailedException {
-        NylasAccount account = client.account(accessToken);
+  public RemoteCollection<Calendar> getCalendars() throws IOException, RequestFailedException {
+      NylasAccount account = client.account(accessToken);
+      RemoteCollection<Calendar> calendars = account.calendars().list();
+      return calendars;
+  }
 
-        RemoteCollection<Calendar> calendars = account.calendars().list();
-        Calendar primary = null;
+  //TODO: 
+  
+  public void createBusyRange(Instant start, Instant end) throws IOException, RequestFailedException {
+	  eventService.createEvent(start, end, "unavailable" , "", false);
+  }
+  
 
-        for (Calendar calendar : calendars) {
-            if (!calendar.isReadOnly() && calendar.getName().contains("@")) {
-                primary = calendar;
-                break;
-            }
-        }
+  
+  public Calendar getPrimaryCalendar() throws IOException, RequestFailedException {
+      NylasAccount account = client.account(accessToken);
 
-        if (primary == null) {
-            log.info("Unable to find primary calendar");
-            throw new IllegalStateException("No primary calendar found");
-        }
+      RemoteCollection<Calendar> calendars = account.calendars().list();
+      Calendar primary = null;
 
-        return primary;
-    }
+      for (Calendar calendar : calendars) {
+          if (!calendar.isReadOnly() && calendar.getName().contains("@")) {
+              primary = calendar;
+              break;
+          }
+      }
 
-    public List<FreeBusy> checkFreeBusy() throws IOException, RequestFailedException {
-        NylasAccount account = client.account(accessToken);
-        Calendars calendars = account.calendars();
-        Calendar primaryCalendar = getPrimaryCalendar();
+      if(primary == null) {
+          log.info("Unable to find primary calendar");
+          throw new IllegalStateException("No primary calendar found");
+      }
 
-        Instant end = ZonedDateTime.now().toInstant();
-        Instant start = end.minus(30, ChronoUnit.DAYS);
+      return primary;
+  }
 
-        FreeBusyQuery query = new FreeBusyQuery().startTime(start.getEpochSecond())
-                .endTime(end.getEpochSecond()).emails(primaryCalendar.getName());
-        List<FreeBusy> freeBusy = calendars.checkFreeBusy(query);
+  public List<FreeBusy> checkFreeBusy() throws IOException, RequestFailedException {
+      NylasAccount account = client.account(accessToken);
+      Calendars calendars = account.calendars();
+      Calendar primaryCalendar = getPrimaryCalendar();
+      
+      Instant end = ZonedDateTime.now().toInstant();
+      Instant start = end.minus(30, ChronoUnit.DAYS);
 
-        return freeBusy;
-    }
+      FreeBusyQuery query = new FreeBusyQuery().startTime(start.getEpochSecond()).endTime(end.getEpochSecond()).emails(primaryCalendar.getName());
+      List<FreeBusy> freeBusy = calendars.checkFreeBusy(query);
 
-    public List<TimeSlot> checkAvailability() throws IOException, RequestFailedException {
-        NylasAccount account = client.account(accessToken);
-        Calendars calendars = account.calendars();
-        Calendar primaryCalendar = getPrimaryCalendar();
-        String accountId = primaryCalendar.getAccountId();
-        String calendarId = primaryCalendar.getId();
+      return freeBusy;
+  }
 
-        FreeBusyCalendars freeBusyCalendars =
-                new FreeBusyCalendars(accountId, Collections.singletonList(calendarId));
-        SingleAvailabilityQuery query =
-                new SingleAvailabilityQuery().startTime(Instant.now().minus(10, ChronoUnit.HOURS))
-                        .endTime(Instant.now().plus(4, ChronoUnit.HOURS)).durationMinutes(30)
-                        .intervalMinutes(10).calendars(freeBusyCalendars);
-        Availability availability = calendars.availability(query);
+  public List<TimeSlot> checkAvailability(Instant start, Instant end) throws IOException, RequestFailedException {
+    NylasAccount account = client.account(accessToken);
+    Calendars calendars = account.calendars();
+    Calendar primaryCalendar = getPrimaryCalendar();
+    String accountId = primaryCalendar.getAccountId();
+    String calendarId = primaryCalendar.getId();
 
-        return availability.getTimeSlots();
-    }
+    FreeBusyCalendars freeBusyCalendars = new FreeBusyCalendars(accountId, Collections.singletonList(calendarId));
+      SingleAvailabilityQuery query = new SingleAvailabilityQuery()
+        .startTime(start)
+        .endTime(end)
+       
+        .calendars(freeBusyCalendars);
+    Availability availability = calendars.availability(query);
+    
+    return availability.getTimeSlots();
+  }
 
-    public RemoteCollection<Event> getEvents() throws IOException, RequestFailedException {
-        NylasAccount account = client.account(accessToken);
-        Calendar primaryCalendar = getPrimaryCalendar();
-        String calendarId = primaryCalendar.getId();
-        System.out.println(primaryCalendar);
+  public RemoteCollection<Event> getEvents() throws IOException, RequestFailedException {
+      NylasAccount account = client.account(accessToken);
+      Calendar primaryCalendar = getPrimaryCalendar();
+      String calendarId = primaryCalendar.getId();
+      System.out.println(primaryCalendar);
 
 
-        EventQuery query =
-                new EventQuery().calendarId(calendarId).startsAfter(Instant.now()).limit(5);
-        RemoteCollection<Event> events = account.events().list(query);
+      EventQuery query = new EventQuery().calendarId(calendarId).startsAfter(Instant.now()).limit(5);
+      RemoteCollection<Event> events = account.events().list(query);
 
-        return events;
-    }
+      return events;
+  }
 }
