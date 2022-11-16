@@ -2,8 +2,6 @@ package com.hfla.service.calendar.services;
 
 import java.io.IOException;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Component;
 import com.nylas.Calendar;
 import com.nylas.Event;
 import com.nylas.Event.Timespan;
-import com.nylas.Event.When;
 import com.nylas.EventQuery;
 import com.nylas.NylasAccount;
 import com.nylas.NylasClient;
@@ -42,28 +39,32 @@ public class EventService {
     Instant start = Instant.now();
     Instant end = start.plus(120, ChronoUnit.DAYS);
 
-    EventQuery query = new EventQuery().calendarId(primaryCalendar.getId()).startsAfter(start).endsBefore(end);
+    EventQuery query =
+        new EventQuery().calendarId(primaryCalendar.getId()).startsAfter(start).endsBefore(end);
     RemoteCollection<Event> events = account.events().list(query);
 
     return events;
   }
-  
-  public RemoteCollection<Event> getEventsInRange(Instant start, Instant end) throws IOException, RequestFailedException {
-	  NylasAccount account = client.account(accessToken);
-	    Calendar primaryCalendar = calendarService.getPrimaryCalendar();
-	    EventQuery query = new EventQuery().calendarId(primaryCalendar.getId()).startsAfter(start).endsBefore(end);
-	    RemoteCollection<Event> events = account.events().list(query);
 
-	    return events;
-  }
-
-  public Event createEvent(Instant start, Instant end, String description, String location, boolean notify) throws IOException, RequestFailedException {
+  public RemoteCollection<Event> getEventsInRange(Instant start, Instant end)
+      throws IOException, RequestFailedException {
     NylasAccount account = client.account(accessToken);
     Calendar primaryCalendar = calendarService.getPrimaryCalendar();
-    
-    Timespan ts =  new Event.Timespan(start,end  );
-    
-    
+    EventQuery query =
+        new EventQuery().calendarId(primaryCalendar.getId()).startsAfter(start).endsBefore(end);
+    RemoteCollection<Event> events = account.events().list(query);
+
+    return events;
+  }
+
+  public Event createEvent(Instant start, Instant end, String description, String location,
+      boolean notify) throws IOException, RequestFailedException {
+    NylasAccount account = client.account(accessToken);
+    Calendar primaryCalendar = calendarService.getPrimaryCalendar();
+
+    Timespan ts = new Event.Timespan(start, end);
+
+
     Event event = new Event(primaryCalendar.getId(), ts);
 
     event.setLocation(location);
@@ -72,7 +73,7 @@ public class EventService {
     Event newEvent = account.events().create(event, notify);
     return newEvent;
   }
-  
+
 
   public Event getEventById(String id) throws IOException, RequestFailedException {
     NylasAccount account = client.account(accessToken);

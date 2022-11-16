@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hfla.service.calendar.services.CalendarService;
 import com.hfla.service.calendar.services.EventService;
-import com.nylas.Calendar;
 import com.nylas.Event;
 import com.nylas.FreeBusy;
 import com.nylas.RemoteCollection;
 import com.nylas.RequestFailedException;
 import com.nylas.TimeSlot;
+import com.nylas.Calendar;
+
 
 
 @RestController
-@RequestMapping(path = "/calendar")
+@RequestMapping(path = "/calendars")
 public class CalendarController {
 
   private final CalendarService calendarService;
@@ -32,28 +33,29 @@ public class CalendarController {
     this.eventService = eventService;
   }
 
-  @GetMapping(path= "/calendars")
+  @GetMapping
   public RemoteCollection<Calendar> getCalendars() throws IOException, RequestFailedException {
-      System.out.println("Getting calendars");
-      return calendarService.getCalendars();
+    System.out.println("Getting calendars");
+    return calendarService.getCalendars();
   }
-  
+
   @GetMapping(path = "/freebusy")
   public List<FreeBusy> getFreeBusy() throws IOException, RequestFailedException {
-      System.out.println("Getting the free busy");
+    System.out.println("Getting the free busy");
 
-      return calendarService.checkFreeBusy();
+    return calendarService.checkFreeBusy();
   }
-  //TODO: getAvailability should require  start date and enddate.
+
+  // TODO: getAvailability should require start date and enddate.
   @GetMapping(path = "/availability")
   public List<TimeSlot> getAvailability() throws IOException, RequestFailedException {
-      System.out.println("Getting availability");
-      return calendarService.checkAvailability(Instant.parse("0"),Instant.parse("1") );
+    System.out.println("Getting availability");
+    return calendarService.checkAvailability(Instant.parse("0"), Instant.parse("1"));
   }
 
   @GetMapping(path = "/events")
   public RemoteCollection<Event> getEvents() throws IOException, RequestFailedException {
-      System.out.println("Getting events");
-      return eventService.getEvents();
+    System.out.println("Getting events");
+    return eventService.getEvents();
   }
 }
