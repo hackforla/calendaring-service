@@ -1,6 +1,6 @@
 # Hack For LA: Calendaring Service
 
-The Calendaring Service is an integration service that serves as a building block for Hack for LA projects that require calendar services (e.g. the ability to schedule meetings).  
+The Calendaring Service is an integration service that serves as a building block for Hack for LA projects that require com services (e.g. the ability to schedule meetings).  
 #blah blah --> TODO {Project Name} helps {target users} accomplish {goal of project}. The {app/site/thing you're building}'s main features include {very brief feature descriptions}.
 
 ### Project context

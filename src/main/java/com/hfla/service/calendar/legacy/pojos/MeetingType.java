@@ -1,6 +1,5 @@
 package com.hfla.service.calendar.legacy.pojos;
 
-import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 

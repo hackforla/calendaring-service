@@ -20,21 +20,21 @@ import com.nylas.RequestFailedException;
 @Component
 public class EventService {
 
-  private final CalendarService calendarService;
+  private final NylasCalendarService nylasCalendarService;
   private static NylasClient client = new NylasClient();
 
   @Value("${access.token}")
   private String accessToken;
 
   @Autowired
-  public EventService(CalendarService calendarService) {
-    this.calendarService = calendarService;
+  public EventService(NylasCalendarService nylasCalendarService) {
+    this.nylasCalendarService = nylasCalendarService;
   }
 
   // The the next 50 events from the next 30 days
   public RemoteCollection<Event> getEvents() throws IOException, RequestFailedException {
     NylasAccount account = client.account(accessToken);
-    Calendar primaryCalendar = calendarService.getPrimaryCalendar();
+    Calendar primaryCalendar = nylasCalendarService.getPrimaryCalendar();
 
     Instant start = Instant.now();
     Instant end = start.plus(120, ChronoUnit.DAYS);
@@ -49,7 +49,7 @@ public class EventService {
   public RemoteCollection<Event> getEventsInRange(Instant start, Instant end)
       throws IOException, RequestFailedException {
     NylasAccount account = client.account(accessToken);
-    Calendar primaryCalendar = calendarService.getPrimaryCalendar();
+    Calendar primaryCalendar = nylasCalendarService.getPrimaryCalendar();
     EventQuery query =
         new EventQuery().calendarId(primaryCalendar.getId()).startsAfter(start).endsBefore(end);
     RemoteCollection<Event> events = account.events().list(query);
@@ -60,7 +60,7 @@ public class EventService {
   public Event createEvent(Instant start, Instant end, String description, String location,
       boolean notify) throws IOException, RequestFailedException {
     NylasAccount account = client.account(accessToken);
-    Calendar primaryCalendar = calendarService.getPrimaryCalendar();
+    Calendar primaryCalendar = nylasCalendarService.getPrimaryCalendar();
 
     Timespan ts = new Event.Timespan(start, end);
 
