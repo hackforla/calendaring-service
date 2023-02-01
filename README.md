@@ -9,12 +9,53 @@ Civic projects often exist within a larger context that may include multiple sta
 
 ### Technology used
 
-- Each platform or framework should get its own bullet.
-- Each platform should include an [active link](#) to the official documentation.
+- Java
+- Springboot
+- Docker
+- PostgreSQL
 
+## How to build and run the Calendaring Microservice
 
+### Pre-requisites
+Ask Google where to get them and how to install. Beware of OS dependencies.
+- Java 17+
+- MAVEN
+- PostgreSQL
+
+Once you have all of the dependecies installed: 
+
+1. clone the repository to your computer
+2. In the root directory create a .env file and copy over the contents .env.example
+3. Fill in the missing values with your own or message a team member for them
+
+### Using Docker
+
+If you want to run the application using [Docker](https://www.docker.com/get-started/), make sure you have Docker installed on your computer and then from the root directory run:
+
+```
+docker-compose up
+```
+Then to stop the container run
+```
+docker-compose down
+```
+### Running locally
+
+4. Inside a terminal from the root directory run ```mvn spring-boot:run```
+
+#### Alternatively:
+
+4. cd into the top level of the repo and run ```mvn package```
+5. cd into the target directory that was created for you
+6. run ```java -jar CalendaringMicroservice-0.0.1-SNAPSHOT.jar```
+
+That's it! Your calendaring microservice is now up and running and ready to receive requests.  It should be up on port 8080. If you want to test the endpoints outside of the calendaring-fe service, you'll need postman to do it.
+
+To see the API documentation, we have set up Swagger.  You can access the Swagger API Documentation locally from: http://localhost:8080/calendaring-service/swagger-ui.html#/
 
 # How to contribute
+
+Before getting started making contributions please message a team member in our Slack channel to get the necessary permissions.
 
 Explain the different ways people can contribute. For example:
 
@@ -25,25 +66,6 @@ Explain the different ways people can contribute. For example:
 
 Remember to provide direct links to each channel.
 
-
-
-## How to build and run the Calendaring Microservicde
-
-Pre-requisites
-Ask Google where to get it from and how to install it. Beware of OS dependencies.
-JDK 1.8+ 
-MAVEN
-PosGres
-
-1. install all of the pre-requisites
-2. clone this repo
-3. cd into the top level of the repo and run "mvn package"
-4. cd into the target directory that was created for you
-4. run "java -jar CalendaringMicroservice-0.0.1-SNAPSHOT.jar"
-
-That's it!  Your calendaring microservice is now up and running and ready to receive requests.  It should be up on port 8080. If you want to test the endpoints outside of the calendaring-fe service, you'll need postman to do it.
-
-To see the API documentation, we have set up Swagger.  You can access the Swagger API Documentation locally from: http://localhost:8080/calendaring-service/swagger-ui.html#/
 ### Working with issues
 
 - Explain how to submit a bug.
@@ -66,8 +88,6 @@ To create a new issue, please use the blank issue template (available when you c
 ### Testing
 
 - Provide instructions.
-
-
 
 # Contact info
 
