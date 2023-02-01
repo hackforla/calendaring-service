@@ -6,6 +6,7 @@ import com.nylas.RequestFailedException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.Instant;
 
 @Service
 public interface CalendarService {
@@ -19,5 +20,6 @@ public interface CalendarService {
 
   public String createEvent(EventsInteface event);
 
+  public Object checkAvailability(Instant start, Instant end) throws IOException,RequestFailedException;
 
 }

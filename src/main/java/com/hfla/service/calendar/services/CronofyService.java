@@ -4,7 +4,9 @@ import com.hfla.service.calendar.pojos.Cronify.Calendars;
 import com.hfla.service.calendar.pojos.Cronify.Event;
 import com.hfla.service.calendar.pojos.EventsInteface;
 import com.hfla.service.calendar.pojos.Cronify.Events;
+import com.nylas.RequestFailedException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,11 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import reactor.core.publisher.Mono;
 
+import java.io.IOException;
+import java.time.Instant;
+
 @Service
+@Primary
 public class CronofyService implements CalendarService{
 
   private final WebClient webClient;
@@ -46,6 +52,11 @@ public class CronofyService implements CalendarService{
         .uri(uriBuilder -> uriBuilder.path("/v1/calendars/{calendarId}/events").build(calendarId))
         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
         .body(Mono.just(event), Event.class).retrieve().bodyToMono(String.class).block();
+  }
+
+  @Override
+  public Object checkAvailability(Instant start, Instant end) throws IOException, RequestFailedException {
+    return this.webClient.get().uri("/v1/availability");
   }
 
 }
