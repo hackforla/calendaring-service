@@ -1,5 +1,5 @@
 
-package com.hfla.service.calendar.pojos;
+package com.hfla.service.calendar.pojos.Cronify;
 
 import java.util.HashMap;
 import java.util.Map;

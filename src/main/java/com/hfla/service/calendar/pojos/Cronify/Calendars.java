@@ -1,7 +1,8 @@
 
-package com.hfla.service.calendar.pojos;
+package com.hfla.service.calendar.pojos.Cronify;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -10,27 +11,29 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.hfla.service.calendar.pojos.CalendarsInterface;
+import com.hfla.service.calendar.pojos.Cronify.Calendar;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "description"
+    "calendars"
 })
 @Generated("jsonschema2pojo")
-public class Location {
+public class Calendars implements CalendarsInterface {
 
-    @JsonProperty("description")
-    private String description;
+    @JsonProperty("calendars")
+    private List<Calendar> calendars = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("description")
-    public String getDescription() {
-        return description;
+    @JsonProperty("calendars")
+    public List<Calendar> getCalendars() {
+        return calendars;
     }
 
-    @JsonProperty("description")
-    public void setDescription(String description) {
-        this.description = description;
+    @JsonProperty("calendars")
+    public void setCalendars(List<Calendar> calendars) {
+        this.calendars = calendars;
     }
 
     @JsonAnyGetter

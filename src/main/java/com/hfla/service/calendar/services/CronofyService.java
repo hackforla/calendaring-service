@@ -1,18 +1,25 @@
 package com.hfla.service.calendar.services;
 
+import com.hfla.service.calendar.pojos.Cronify.Calendars;
+import com.hfla.service.calendar.pojos.Cronify.Event;
+import com.hfla.service.calendar.pojos.EventsInteface;
+import com.hfla.service.calendar.pojos.Cronify.Events;
+import com.nylas.RequestFailedException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.hfla.service.calendar.pojos.Calendars;
-import com.hfla.service.calendar.pojos.Event;
-import com.hfla.service.calendar.pojos.Events;
 import reactor.core.publisher.Mono;
 
+import java.io.IOException;
+import java.time.Instant;
+
 @Service
-public class CronofyService {
+@Primary
+public class CronofyService implements CalendarService{
 
   private final WebClient webClient;
 
@@ -24,7 +31,7 @@ public class CronofyService {
         .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken).build();
   }
 
-  public Events getEvents() {
+  public EventsInteface getEvents() {
     return this.webClient.get().uri("/v1/events?tzid=Etc/UTC").retrieve().bodyToMono(Events.class)
         .block();
   }
@@ -33,13 +40,23 @@ public class CronofyService {
     return this.webClient.get().uri("/v1/calendars").retrieve().bodyToMono(Calendars.class).block();
   }
 
-  public String createEvent(Event event) {
+
+
+
+  @Override
+  public String createEvent(EventsInteface eventParameter) {
+    Events event = (Events)eventParameter;
     String calendarId = this.getCalendars().getCalendars().get(0).getCalendarId();
 
     return this.webClient.post()
         .uri(uriBuilder -> uriBuilder.path("/v1/calendars/{calendarId}/events").build(calendarId))
         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
         .body(Mono.just(event), Event.class).retrieve().bodyToMono(String.class).block();
+  }
+
+  @Override
+  public Object checkAvailability(Instant start, Instant end) throws IOException, RequestFailedException {
+    return this.webClient.get().uri("/v1/availability");
   }
 
 }

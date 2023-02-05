@@ -29,7 +29,7 @@ public class CalendarIntegrationTest {
 		String nylasId = "9mnvr3qpqtvwkj4egbic7jcht";
 		// String url = "/calendar/events?nylasId=" + nylasId;
 		String url = "http://localhost:8080";
-		URI uri = UriComponentsBuilder.fromHttpUrl(url).path("/calendar/events")
+		URI uri = UriComponentsBuilder.fromHttpUrl(url).path("/com/events")
 				.queryParam("nylasId", nylasId).build().toUri();
 
 		// act
@@ -55,7 +55,7 @@ public class CalendarIntegrationTest {
 	private ConnectedCalendar getCalendars(String nylasId) {
 
 		String url = "http://localhost:8080";
-		URI uri = UriComponentsBuilder.fromHttpUrl(url).path("/calendar/calendars")
+		URI uri = UriComponentsBuilder.fromHttpUrl(url).path("/com/calendars")
 				.queryParam("nylasId", nylasId).build().toUri();
 
 		ResponseEntity<ConnectedCalendar> response =

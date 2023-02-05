@@ -1,5 +1,9 @@
 package com.hfla.service.calendar.controllers;
 
+import com.hfla.service.calendar.pojos.Cronify.Calendars;
+import com.hfla.service.calendar.pojos.Cronify.Event;
+import com.hfla.service.calendar.pojos.Cronify.Events;
+import com.hfla.service.calendar.pojos.EventsInteface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hfla.service.calendar.services.CronofyService;
-import com.hfla.service.calendar.pojos.Calendars;
-import com.hfla.service.calendar.pojos.Events;
-import com.hfla.service.calendar.pojos.Event;
 
 
 @RestController
@@ -28,12 +29,12 @@ public class CronofyController {
   }
 
   @GetMapping(path = "/events")
-  public Events getEvents() {
+  public EventsInteface getEvents() {
     return cronofyService.getEvents();
   }
 
   @PostMapping(path = "/events")
-  public String createEvent(Event event) {
+  public String createEvent(EventsInteface event) {
     return cronofyService.createEvent(event);
   }
 
