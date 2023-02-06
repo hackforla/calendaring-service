@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="78ee079c-91f4-49b9-b724-b024175ec0bc" name="Default Changelist" comment="Writing code to implement dependency injections.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CalendarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CronofyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/EventController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CalendarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CalendarService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/NylasCalendarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/NylasCalendarService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -558,6 +562,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/ConnectedCalendar.java</url>
           <line>60</line>
           <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/EndpointsListener.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

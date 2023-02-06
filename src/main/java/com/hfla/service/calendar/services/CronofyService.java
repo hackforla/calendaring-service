@@ -41,8 +41,6 @@ public class CronofyService implements CalendarService{
   }
 
 
-
-
   @Override
   public String createEvent(EventsInteface eventParameter) {
     Events event = (Events)eventParameter;

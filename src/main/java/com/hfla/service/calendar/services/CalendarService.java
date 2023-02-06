@@ -12,8 +12,6 @@ import java.time.Instant;
 public interface CalendarService {
 
 
-
-
   public EventsInteface getEvents() throws IOException, RequestFailedException;
 
   public CalendarsInterface getCalendars() throws RequestFailedException, IOException;
@@ -21,5 +19,4 @@ public interface CalendarService {
   public String createEvent(EventsInteface event);
 
   public Object checkAvailability(Instant start, Instant end) throws IOException,RequestFailedException;
-
 }

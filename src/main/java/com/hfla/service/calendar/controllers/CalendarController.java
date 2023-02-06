@@ -2,24 +2,16 @@ package com.hfla.service.calendar.controllers;
 
 import java.io.IOException;
 import java.time.Instant;
-import java.util.List;
 
 import com.hfla.service.calendar.pojos.CalendarsInterface;
 import com.hfla.service.calendar.pojos.EventsInteface;
 import com.hfla.service.calendar.services.CalendarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.hfla.service.calendar.services.NylasCalendarService;
-import com.hfla.service.calendar.services.EventService;
-import com.nylas.Event;
-import com.nylas.FreeBusy;
-import com.nylas.RemoteCollection;
 import com.nylas.RequestFailedException;
-import com.nylas.TimeSlot;
-import com.nylas.Calendar;
+
+
 
 
 
@@ -28,27 +20,20 @@ import com.nylas.Calendar;
 public class CalendarController {
 
   private final CalendarService calendarService;
-  private final EventService eventService;
+  //private final EventService eventService;
 
   @Autowired
-  public CalendarController(CalendarService calendarService, EventService eventService) {
+  public CalendarController(CalendarService calendarService) {
+
     this.calendarService = calendarService;
-    this.eventService = eventService;
   }
 
-  @GetMapping
+  @GetMapping(path = "/calendars")
   public CalendarsInterface getCalendars() throws IOException, RequestFailedException {
     System.out.println("Getting calendars");
     return calendarService.getCalendars();
   }
 
- /* @GetMapping(path = "/freebusy")
-  public List<FreeBusy> getFreeBusy() throws IOException, RequestFailedException {
-    System.out.println("Getting the free busy");
-
-    return calendarService.checkFreeBusy();
-  }
-*/
 
   // TODO: getAvailability should require start date and enddate.
   @GetMapping(path = "/availability")
@@ -62,4 +47,11 @@ public class CalendarController {
     System.out.println("Getting events");
     return calendarService.getEvents();
   }
+
+  @PostMapping(value = "/createEvent")
+  public String createEvent()
+          {
+    return calendarService.createEvent(null);
+  }
+
 }

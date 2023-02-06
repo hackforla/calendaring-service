@@ -11,24 +11,11 @@ import com.hfla.service.calendar.pojos.EventsInteface;
 import com.hfla.service.calendar.pojos.Nylas.NylasCalendar;
 import com.hfla.service.calendar.pojos.Nylas.NylasCalendars;
 import com.hfla.service.calendar.pojos.Nylas.NylasEvents;
+import com.nylas.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import com.nylas.Availability;
-import com.nylas.Calendar;
-import com.nylas.Calendars;
-import com.nylas.EventQuery;
-import com.nylas.FreeBusy;
-import com.nylas.FreeBusyCalendars;
-import com.nylas.FreeBusyQuery;
-import com.nylas.NylasAccount;
-import com.nylas.NylasClient;
-import com.nylas.RemoteCollection;
-import com.nylas.RequestFailedException;
-import com.nylas.SingleAvailabilityQuery;
-import com.nylas.TimeSlot;
 
 @Component
 public class NylasCalendarService implements CalendarService{
@@ -107,7 +94,8 @@ public class NylasCalendarService implements CalendarService{
     return availability.getTimeSlots();
   }
 
-  public NylasEvents getEvents() throws IOException, RequestFailedException {
+
+    public NylasEvents getEvents() throws IOException, RequestFailedException {
       NylasAccount account = client.account(accessToken);
       Calendar primaryCalendar = getPrimaryCalendar();
       String calendarId = primaryCalendar.getId();
