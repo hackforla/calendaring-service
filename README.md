@@ -49,9 +49,9 @@ docker-compose down
 5. cd into the target directory that was created for you
 6. run ```java -jar CalendaringMicroservice-0.0.1-SNAPSHOT.jar```
 
-That's it! Your calendaring microservice is now up and running and ready to receive requests.  It should be up on port 8080. If you want to test the endpoints outside of the calendaring-fe service, you'll need postman to do it.
+That's it! Your calendaring microservice is now up and running and ready to receive requests.  It should be up on port 8090. If you want to test the endpoints outside of the calendaring-fe service, you'll need postman to do it.
 
-To see the API documentation, we have set up Swagger.  You can access the Swagger API Documentation locally from: http://localhost:8080/calendaring-service/swagger-ui.html#/
+To see the API documentation, we have set up Swagger.  You can access the Swagger API Documentation locally from: http://localhost:8090/calendaring-service/swagger-ui.html#/
 
 # How to contribute
 
