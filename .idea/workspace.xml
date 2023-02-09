@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78ee079c-91f4-49b9-b724-b024175ec0bc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CronofyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CronofyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CalendarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CalendarService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/EventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="78ee079c-91f4-49b9-b724-b024175ec0bc" name="Default Changelist" comment="- Added StartMock endpoint which initates Cronofy's IdP&#10;- Renamed environment variables&#10;- Get JWT Token from Cronofy to use with their service&#10;- Changed Event endpoint to use Cronofy's service with protype client information" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -375,6 +362,14 @@
       <option name="presentableId" value="Default" />
       <updated>1590633455959</updated>
     </task>
+    <task id="LOCAL-00001" summary="- Added StartMock endpoint which initates Cronofy's IdP&#10;- Renamed environment variables&#10;- Get JWT Token from Cronofy to use with their service&#10;- Changed Event endpoint to use Cronofy's service with protype client information">
+      <created>1675920725095</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675920725095</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -468,6 +463,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="- Added StartMock endpoint which initates Cronofy's IdP&#10;- Renamed environment variables&#10;- Get JWT Token from Cronofy to use with their service&#10;- Changed Event endpoint to use Cronofy's service with protype client information" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added StartMock endpoint which initates Cronofy's IdP&#10;- Renamed environment variables&#10;- Get JWT Token from Cronofy to use with their service&#10;- Changed Event endpoint to use Cronofy's service with protype client information" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -586,11 +585,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java</url>
           <line>90</line>
           <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="51" />
         </line-breakpoint>
         <breakpoint type="java-exception">
           <properties class="java.lang.IllegalArgumentException" package="java.lang" />
