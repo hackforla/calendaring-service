@@ -23,7 +23,7 @@ public class EventService {
   private final CalendarService calendarService;
   private static NylasClient client = new NylasClient();
 
-  @Value("${access.token}")
+
   private String accessToken;
 
   @Autowired

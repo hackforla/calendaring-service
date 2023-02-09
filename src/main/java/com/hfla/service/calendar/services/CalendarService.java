@@ -31,10 +31,9 @@ import com.nylas.TimeSlot;
 @Component
 public class CalendarService {
 
-  @Value("${access.token}")
   private String accessToken;
   
-  private final EventService eventService;
+  //private final EventService eventService;
 
   EventService e;
 
@@ -42,10 +41,17 @@ public class CalendarService {
 
   private static NylasClient client = new NylasClient();
   
-  @Autowired
-  public CalendarService(EventService eventService) {
+  //@Autowired
+/*  public CalendarService(EventService eventService) {
     this.eventService = eventService;
-  }
+  }*/
+
+    @Autowired
+    public CalendarService() {
+
+    }
+
+
 
   public RemoteCollection<Calendar> getCalendars() throws IOException, RequestFailedException {
       NylasAccount account = client.account(accessToken);
@@ -55,9 +61,7 @@ public class CalendarService {
 
   //TODO: 
   
-  public void createBusyRange(Instant start, Instant end) throws IOException, RequestFailedException {
-	  eventService.createEvent(start, end, "unavailable" , "", false);
-  }
+
   
 
   
