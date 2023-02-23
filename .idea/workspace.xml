@@ -11,12 +11,15 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Nylas/NylasCalendar.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Nylas/NylasCalendars.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Nylas/NylasEvents.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/NylasCalendarService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/ICalendarService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CalendarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CronofyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/EventController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/AvailabilityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/AvailabilityController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/ConnectedCalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/ConnectedCalendarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/MeetingTypesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/MeetingTypesController.java" afterDir="false" />
@@ -31,7 +34,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Events.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/Events.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/EventService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CalendarService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/EventService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/hfla/huu/CalendarIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hfla/huu/CalendarIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,8 +48,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -612,18 +618,13 @@
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CronofyController.java</url>
-          <line>55</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CalendarController.java</url>
+          <line>49</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java</url>
-          <line>90</line>
+          <line>64</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <breakpoint type="java-exception">

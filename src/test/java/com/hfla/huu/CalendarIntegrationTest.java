@@ -28,8 +28,8 @@ public class CalendarIntegrationTest {
 		// arrange
 		String nylasId = "9mnvr3qpqtvwkj4egbic7jcht";
 		// String url = "/calendar/events?nylasId=" + nylasId;
-		String url = "http://localhost:8080";
-		URI uri = UriComponentsBuilder.fromHttpUrl(url).path("/calendar/events")
+		String url = "http://localhost:8090";
+		URI uri = UriComponentsBuilder.fromHttpUrl(url).path("/com/events")
 				.queryParam("nylasId", nylasId).build().toUri();
 
 		// act
@@ -54,8 +54,8 @@ public class CalendarIntegrationTest {
 
 	private ConnectedCalendar getCalendars(String nylasId) {
 
-		String url = "http://localhost:8080";
-		URI uri = UriComponentsBuilder.fromHttpUrl(url).path("/calendar/calendars")
+		String url = "http://localhost:8090";
+		URI uri = UriComponentsBuilder.fromHttpUrl(url).path("/com/calendars")
 				.queryParam("nylasId", nylasId).build().toUri();
 
 		ResponseEntity<ConnectedCalendar> response =
@@ -87,7 +87,7 @@ public class CalendarIntegrationTest {
 			System.out.println("error: " + e.getMessage());
 		}
 
-		String url = "https://localhost:8080";
+		String url = "https://localhost:8090";
 		OkHttpClient client = new OkHttpClient();
 		RequestBody body = RequestBody.create(MediaType.parse("application/json"), requestBody);
 		Request request = new Request.Builder().url(url).post(body).build();

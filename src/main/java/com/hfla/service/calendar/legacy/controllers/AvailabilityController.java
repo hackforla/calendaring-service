@@ -1,11 +1,10 @@
 package com.hfla.service.calendar.legacy.controllers;
 
 import com.hfla.service.calendar.legacy.pojos.Availability;
+import com.hfla.service.calendar.legacy.repositories.AvailabilityRepository;
 import com.hfla.service.calendar.legacy.pojos.ConnectedCalendar;
 import com.hfla.service.calendar.legacy.pojos.ConnectedEvent;
-import com.hfla.service.calendar.legacy.repositories.AvailabilityRepository;
 
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,7 +22,7 @@ public class AvailabilityController {
 	ConnectedCalendarController connectedCalendarController;
 
 	@Autowired
-	AvailabilityRepository availabilityRepository;
+    AvailabilityRepository availabilityRepository;
 
 	//calculates the availability for a given user based on the nylasId and a start/end time
 	@GetMapping(value = "/list", consumes = "application/json", produces = "application/json")

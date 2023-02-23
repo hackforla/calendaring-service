@@ -1,5 +1,5 @@
 
-package com.hfla.service.calendar.pojos;
+package com.hfla.service.calendar.pojos.Cronify;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,13 +11,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.hfla.service.calendar.pojos.Cronify.Event;
+import com.hfla.service.calendar.pojos.EventsInteface;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "events"
 })
 @Generated("jsonschema2pojo")
-public class Events {
+public class Events implements EventsInteface {
 
     @JsonProperty("events")
     private List<Event> events = null;

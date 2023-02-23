@@ -1,9 +1,8 @@
 package com.hfla.service.calendar.legacy.repositories;
 
+import com.hfla.service.calendar.legacy.pojos.Availability;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import com.hfla.service.calendar.legacy.pojos.Availability;
 
 import java.util.List;
 

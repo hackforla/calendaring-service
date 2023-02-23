@@ -17,7 +17,7 @@ import org.springframework.http.HttpHeaders;
 public class MeetingTypesController {
 
 	@Autowired
-	MeetingTypeRepository meetingTypeRepository;
+    MeetingTypeRepository meetingTypeRepository;
 
 	@PostMapping(value = "/create", consumes = "application/json", produces = "application/json")
 	ResponseEntity<HttpStatus> createMeetingType(@RequestBody MeetingType meetingType) {
