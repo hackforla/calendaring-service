@@ -1,65 +1,56 @@
 package com.hfla.service.calendar.controllers;
 
-import java.io.IOException;
-import java.time.Instant;
-import java.util.List;
-
-import com.hfla.service.calendar.pojos.CalendarsInterface;
-import com.hfla.service.calendar.pojos.EventsInteface;
-import com.hfla.service.calendar.services.CalendarService;
+import com.nylas.RequestFailedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.hfla.service.calendar.pojos.Cronify.Events;
 
-import com.hfla.service.calendar.services.NylasCalendarService;
-import com.hfla.service.calendar.services.EventService;
-import com.nylas.Event;
-import com.nylas.FreeBusy;
-import com.nylas.RemoteCollection;
-import com.nylas.RequestFailedException;
-import com.nylas.TimeSlot;
-import com.nylas.Calendar;
+import com.hfla.service.calendar.services.CronofyService;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.*;
+import java.util.UUID;
+
+import java.io.IOException;
 
 
 @RestController
 @RequestMapping(path = "/calendars")
 public class CalendarController {
 
-  private final CalendarService calendarService;
-  private final EventService eventService;
+  @Value("${cronofy.client.id}")
+  private String clientId;
+
+  @Value("${cronofy.redirect.uri}")
+  private String redirectUri;
+
+  @Value("${cronofy.app.baseuri}")
+  private String cronofyAppBaseUrl;
+  private final CronofyService cronofyService;
 
   @Autowired
-  public CalendarController(CalendarService calendarService, EventService eventService) {
-    this.calendarService = calendarService;
-    this.eventService = eventService;
+  public CalendarController(CronofyService cronofyService) {
+    this.cronofyService = cronofyService;
   }
 
-  @GetMapping
-  public CalendarsInterface getCalendars() throws IOException, RequestFailedException {
-    System.out.println("Getting calendars");
-    return calendarService.getCalendars();
+  @GetMapping(path = "/token")
+  public String getToken(@RequestParam("code") String code) throws IOException, RequestFailedException {
+    return cronofyService.getToken(code);
   }
 
- /* @GetMapping(path = "/freebusy")
-  public List<FreeBusy> getFreeBusy() throws IOException, RequestFailedException {
-    System.out.println("Getting the free busy");
-
-    return calendarService.checkFreeBusy();
+  @RequestMapping(value = "/startMock", method = RequestMethod.GET)
+  public void redirectToTwitter(HttpServletResponse httpServletResponse) throws IOException {
+    httpServletResponse.sendRedirect(cronofyAppBaseUrl + "/oauth/authorize?response_type=code&client_id=" + clientId + "&redirect_uri=" + redirectUri + "&scope=read_write&state=" + UUID.randomUUID());
   }
-*/
+  @RequestMapping(value = "/events", method = RequestMethod.GET)
+  public Events getEvents(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) throws IOException, RequestFailedException {
+    return cronofyService.getEvents(token.replace("Bearer ", ""));
 
-  // TODO: getAvailability should require start date and enddate.
-  @GetMapping(path = "/availability")
-  public Object getAvailability() throws IOException, RequestFailedException {
-    System.out.println("Getting availability");
-    return calendarService.checkAvailability(Instant.parse("0"), Instant.parse("1"));
   }
 
-  @GetMapping(path = "/events")
-  public EventsInteface getEvents() throws IOException, RequestFailedException {
-    System.out.println("Getting events");
-    return calendarService.getEvents();
-  }
 }
