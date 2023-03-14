@@ -14,6 +14,7 @@ public class Member {
 
     @JsonProperty(value = "sub")
     public String subscription;
+
     @JsonProperty(value = "calendar_ids")
     public List<String> calendarIds;
 }

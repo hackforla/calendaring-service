@@ -12,6 +12,7 @@ public class QueryPeriod {
     }
     @JsonProperty(value = "start")
     public String start;
+
     @JsonProperty(value = "end")
     public String end;
 }
