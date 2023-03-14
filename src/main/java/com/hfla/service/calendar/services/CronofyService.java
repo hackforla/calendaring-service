@@ -73,14 +73,13 @@ public class CronofyService implements ICalendarService{
     availabilityRequest.requiredDuration = requiredDuration;
 
     try {
-      var s = new ObjectMapper().registerModule(new JodaModule()).writeValueAsString(availabilityRequest);
 
       var response = webClient.post()
               .uri("/v1/availability")
               .header("Authorization", "Bearer " + clientSecret)
               .contentType(MediaType.APPLICATION_JSON)
               .accept(MediaType.APPLICATION_JSON)
-              .body(BodyInserters.fromValue(s))
+              .body(BodyInserters.fromValue(new ObjectMapper().registerModule(new JodaModule()).writeValueAsString(availabilityRequest)))
               .retrieve()
               .bodyToMono(String.class)
               .block();
@@ -88,9 +87,9 @@ public class CronofyService implements ICalendarService{
     return response;
 
     }
-    catch(WebClientResponseException re)
+    catch(WebClientResponseException wcre)
     {
-      return re.getResponseBodyAsString();
+      return wcre.getResponseBodyAsString();
     }
     catch(Exception e)
     {
