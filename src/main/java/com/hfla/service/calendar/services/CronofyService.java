@@ -11,7 +11,6 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.context.annotation.Primary;
 
-
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import java.net.*;
@@ -63,10 +62,8 @@ public class CronofyService implements ICalendarService{
     participant.required = "all";
     participant.members.add(member);
 
-
     RequiredDuration requiredDuration = new RequiredDuration();
     requiredDuration.minutes = 60;
-
 
     var participants = new ArrayList<Participant>();
     participants.add(participant);
@@ -74,9 +71,6 @@ public class CronofyService implements ICalendarService{
     AvailabilityRequest availabilityRequest = new AvailabilityRequest(participants);
     availabilityRequest.queryPeriods.add(queryPeriod);
     availabilityRequest.requiredDuration = requiredDuration;
-
-
-
 
     try {
       var s = new ObjectMapper().registerModule(new JodaModule()).writeValueAsString(availabilityRequest);
