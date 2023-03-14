@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3e41170-e140-4b7a-81e2-e2f83bde614e" name="Changes" comment="- Added code to call Cronofy to check a calendar availability&#10;- Added new endpoints, routing changes&#10;- New Pojos&#10;- Returns availability for a calendar">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" afterDir="false" />
+    <list default="true" id="c3e41170-e140-4b7a-81e2-e2f83bde614e" name="Changes" comment="- Removed WS">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CalendarController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -398,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678833770132</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Removed WS">
+      <created>1678834501149</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1678834501149</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -498,7 +505,8 @@
     <MESSAGE value="- Updated workspace file" />
     <MESSAGE value="- Merged with Main&#10;- Refactored Cronofy, Calendar artifacts&#10;- Removed hardcoded client id, client secret" />
     <MESSAGE value="- Added code to call Cronofy to check a calendar availability&#10;- Added new endpoints, routing changes&#10;- New Pojos&#10;- Returns availability for a calendar" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added code to call Cronofy to check a calendar availability&#10;- Added new endpoints, routing changes&#10;- New Pojos&#10;- Returns availability for a calendar" />
+    <MESSAGE value="- Removed WS" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Removed WS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -605,7 +613,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CalendarController.java</url>
-          <line>52</line>
+          <line>46</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
