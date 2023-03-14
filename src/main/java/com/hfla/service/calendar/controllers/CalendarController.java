@@ -1,6 +1,7 @@
 package com.hfla.service.calendar.controllers;
 
 import com.nylas.RequestFailedException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.*;
+
+import java.util.ArrayList;
 import java.util.UUID;
 
 import java.io.IOException;
@@ -51,6 +54,13 @@ public class CalendarController {
   public Events getEvents(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) throws IOException, RequestFailedException {
     return cronofyService.getEvents(token.replace("Bearer ", ""));
 
+  }
+
+  @RequestMapping(value = "{subscriptionId}/{calendarId}/availability", method = RequestMethod.GET)
+  public String getAvailability(@RequestHeader(HttpHeaders.AUTHORIZATION) String token, @PathVariable String subscriptionId, @PathVariable String calendarId, @RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate ) throws IOException, RequestFailedException {
+    ArrayList<String> calendarIds = new ArrayList<>();
+    calendarIds.add(calendarId);
+    return cronofyService.getAvailability(subscriptionId, calendarIds,startDate, endDate);
   }
 
 }

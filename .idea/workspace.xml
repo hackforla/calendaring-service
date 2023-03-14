@@ -4,41 +4,20 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3e41170-e140-4b7a-81e2-e2f83bde614e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/CalendarInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/CalendarsInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/EventsInteface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Nylas/NylasCalendar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Nylas/NylasCalendars.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Nylas/NylasEvents.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/ICalendarService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c3e41170-e140-4b7a-81e2-e2f83bde614e" name="Changes" comment="- Added code to call Cronofy to check a calendar availability&#10;- Added new endpoints, routing changes&#10;- New Pojos&#10;- Returns availability for a calendar">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/AvailabilityRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/Participant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/QueryPeriod.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/RequiredDuration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CalendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CronofyController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/EventController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/AvailabilityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/AvailabilityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/ConnectedCalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/ConnectedCalendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/MeetingTypesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/controllers/MeetingTypesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/pojos/ConnectedCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/pojos/ConnectedCalendar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/pojos/ConnectedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/pojos/ConnectedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/pojos/MeetingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/pojos/MeetingType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/repositories/AvailabilityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/repositories/AvailabilityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/repositories/MeetingTypeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/legacy/repositories/MeetingTypeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Attendee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/Attendee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Calendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/Calendar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Calendars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/Calendars.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Events.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/Events.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CalendarService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Nylas/NylasCalendar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Nylas/NylasCalendars.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Nylas/NylasEvents.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/EventService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hfla/huu/CalendarIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hfla/huu/CalendarIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/ICalendarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/ICalendarService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -59,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="users/jed-stewart/tokens-needed" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -254,6 +233,9 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.hfla.service.calendar.pojos.Cronify" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -394,7 +376,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="78ee079c-91f4-49b9-b724-b024175ec0bc" name="Default Changelist" comment="" />
+      <changelist id="c3e41170-e140-4b7a-81e2-e2f83bde614e" name="Changes" comment="- Merged with Main&#10;- Refactored Cronofy, Calendar artifacts&#10;- Removed hardcoded client id, client secret" />
       <created>1590633455959</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -414,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675920826178</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="- Merged with Main&#10;- Refactored Cronofy, Calendar artifacts&#10;- Removed hardcoded client id, client secret">
+      <created>1677125689911</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677125689911</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -512,7 +501,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Added StartMock endpoint which initates Cronofy's IdP&#10;- Renamed environment variables&#10;- Get JWT Token from Cronofy to use with their service&#10;- Changed Event endpoint to use Cronofy's service with protype client information" />
     <MESSAGE value="- Updated workspace file" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Updated workspace file" />
+    <MESSAGE value="- Merged with Main&#10;- Refactored Cronofy, Calendar artifacts&#10;- Removed hardcoded client id, client secret" />
+    <MESSAGE value="- Added code to call Cronofy to check a calendar availability&#10;- Added new endpoints, routing changes&#10;- New Pojos&#10;- Returns availability for a calendar" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added code to call Cronofy to check a calendar availability&#10;- Added new endpoints, routing changes&#10;- New Pojos&#10;- Returns availability for a calendar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -619,13 +610,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/controllers/CalendarController.java</url>
-          <line>49</line>
+          <line>52</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java</url>
-          <line>64</line>
+          <line>116</line>
           <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
         <breakpoint type="java-exception">
           <properties class="java.lang.IllegalArgumentException" package="java.lang" />

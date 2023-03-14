@@ -1,24 +1,26 @@
 package com.hfla.service.calendar.services;
 
-import com.hfla.service.calendar.pojos.Cronify.Event;
-import com.hfla.service.calendar.pojos.Cronify.Events;
-import com.hfla.service.calendar.pojos.EventsInteface;
-import com.nylas.RequestFailedException;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
+import com.hfla.service.calendar.pojos.Cronify.*;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.context.annotation.Primary;
-import java.io.IOException;
-import java.time.Instant;
-import reactor.core.publisher.Mono;
 
-import java.io.IOException;
-import java.time.Instant;
+
+import org.springframework.web.reactive.function.client.WebClientResponseException;
+
 import java.net.*;
 import java.io.*;
+import java.util.*;
+
 import org.json.*;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 @Primary
@@ -51,6 +53,56 @@ public class CronofyService implements ICalendarService{
             .block();
   }
 
+  public String getAvailability(String subscriptionId, ArrayList<String> calendarIds, String startDate, String endDate) {
+
+
+    Member member = new Member(subscriptionId,calendarIds);
+    QueryPeriod queryPeriod = new QueryPeriod(startDate, endDate);
+
+    Participant participant = new Participant();
+    participant.required = "all";
+    participant.members.add(member);
+
+
+    RequiredDuration requiredDuration = new RequiredDuration();
+    requiredDuration.minutes = 60;
+
+
+    var participants = new ArrayList<Participant>();
+    participants.add(participant);
+
+    AvailabilityRequest availabilityRequest = new AvailabilityRequest(participants);
+    availabilityRequest.queryPeriods.add(queryPeriod);
+    availabilityRequest.requiredDuration = requiredDuration;
+
+
+
+
+    try {
+      var s = new ObjectMapper().registerModule(new JodaModule()).writeValueAsString(availabilityRequest);
+
+      var response = webClient.post()
+              .uri("/v1/availability")
+              .header("Authorization", "Bearer " + clientSecret)
+              .contentType(MediaType.APPLICATION_JSON)
+              .accept(MediaType.APPLICATION_JSON)
+              .body(BodyInserters.fromValue(s))
+              .retrieve()
+              .bodyToMono(String.class)
+              .block();
+
+    return response;
+
+    }
+    catch(WebClientResponseException re)
+    {
+      return re.getResponseBodyAsString();
+    }
+    catch(Exception e)
+    {
+      return null;
+    }
+  }
 
   public String getToken(String code) {
 
@@ -95,12 +147,4 @@ public class CronofyService implements ICalendarService{
     }
 
   }
-
-
-
-  @Override
-  public Object checkAvailability(Instant start, Instant end) throws IOException, RequestFailedException {
-    return this.webClient.get().uri("/v1/availability");
-  }
-
 }
