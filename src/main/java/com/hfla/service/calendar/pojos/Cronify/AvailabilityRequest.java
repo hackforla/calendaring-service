@@ -9,6 +9,9 @@ public class AvailabilityRequest {
     {
         this.participants = participants;
     }
+    @JsonProperty(value = "response_format")
+    public String reformatFormat = "slots";
+
     @JsonProperty(value = "participants")
     public ArrayList<Participant> participants;
 

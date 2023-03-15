@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3e41170-e140-4b7a-81e2-e2f83bde614e" name="Changes" comment="- Added WS to separate properties">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/services/CronofyService.java" afterDir="false" />
+    <list default="true" id="c3e41170-e140-4b7a-81e2-e2f83bde614e" name="Changes" comment="- Removed variables">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/AvailabilityRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hfla/service/calendar/pojos/Cronify/AvailabilityRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
